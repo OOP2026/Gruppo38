@@ -65,8 +65,6 @@ public class RegistrazioneStudente {
                 String selectedEnumStr = annoGroup.getSelection().getActionCommand();
                 AnnoAccademico annoCorso = AnnoAccademico.valueOf(selectedEnumStr);
 
-                Studente newStudente = new Studente(login, password, nome, cognome, email, matricola, annoCorso);
-
                 mainFrame.setVisible(true);
                 frame.dispose();
             }
