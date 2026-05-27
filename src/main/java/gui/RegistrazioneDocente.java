@@ -1,7 +1,10 @@
 package gui;
 
 import controller.Controller;
+import model.AnnoAccademico;
 
+import javax.naming.AuthenticationException;
+import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +15,9 @@ public class RegistrazioneDocente {
     private JTextField cognomeField;
     private JTextField emailField;
     private JTextField usernameField;
-    private JPasswordField passwordField1;
     private JButton registratiButton;
     private JButton annullaButton;
-    private JTextField passwordField;
+    private JPasswordField passwordField;
     private JRadioButton siRadioButton;
     private JRadioButton noRadioButton;
     private JPanel logoPanel;
@@ -29,6 +31,7 @@ public class RegistrazioneDocente {
     private JRadioButton radioButton3;
     private JPanel buttonPanel;
     private JFrame frame;
+    private ButtonGroup Responsabile;
 
     public RegistrazioneDocente(JFrame mainFrame, Controller controller) {
         frame = new JFrame("RegistrazioneDocente");
@@ -42,6 +45,27 @@ public class RegistrazioneDocente {
             public void actionPerformed(ActionEvent e) {
                 mainFrame.setVisible(true);
                 frame.dispose();
+            }
+        });
+        registratiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nome = nomeField.getText();
+                String cognome = cognomeField.getText();
+                String email = emailField.getText();
+                String login = usernameField.getText();
+                String password = String.valueOf(passwordField.getPassword());
+                String selectedEnumStr = Responsabile.getSelection().getActionCommand();
+                System.out.println(selectedEnumStr);
+                boolean isResponsabile = selectedEnumStr.equals("Si");
+
+                try {
+                    controller.registrazioneDocente(login,password,nome,cognome,email,isResponsabile);
+                    mainFrame.setVisible(true);
+                    frame.dispose();
+                } catch (AuthenticationException | LoginException ex) {
+                    JOptionPane.showMessageDialog(frame, "Login Error: " + ex.getMessage());
+                }
             }
         });
     }

@@ -15,7 +15,7 @@ public class Home {
     private JPanel mainPanel;
     private JButton registratiButton;
     private JPanel rightPanel;
-    private JButton loginButton1;
+    private JButton loginStudente;
     private JPasswordField passwordField;
     private JLabel passwordLabel;
     private JLabel usernameLabel;
@@ -25,6 +25,9 @@ public class Home {
     private JLabel text1;
     private JLabel text2;
     private JLabel text3;
+    private JButton loginStudenteButton;
+    private JButton loginDocenteButton;
+    private JButton registatiButton;
     private static JFrame mainFrame;
     private static Controller controller;
 
@@ -44,7 +47,7 @@ public class Home {
                 new DocenteStudente(mainFrame,controller);
             }
         });
-        loginButton1.addActionListener(new ActionListener() {
+        loginStudente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String login,password;
@@ -57,6 +60,23 @@ public class Home {
                 } catch (CampoVuotoException | LoginException | MissingStudentException ex) {
                     JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
                 }
+            }
+        });
+
+        loginDocenteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String login,password;
+                login = usernameField.getText();
+                password = passwordField.getText();
+
+                try {
+                    if(controller.loginDocente(login,password))
+                        new SchermataPrincipale(mainFrame,controller);
+                } catch (CampoVuotoException | LoginException | MissingStudentException ex) {
+                    JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
+                }
+
             }
         });
     }

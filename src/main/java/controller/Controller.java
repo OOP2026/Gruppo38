@@ -2,6 +2,7 @@ package controller;
 
 import exceptions.CampoVuotoException;
 import exceptions.MissingStudentException;
+import exceptions.MissingTeacherException;
 import model.AnnoAccademico;
 import model.Docente;
 import model.Studente;
@@ -43,6 +44,7 @@ public class Controller {
 			if (utente.getLogin().equals(login)) {
 				throw new LoginException("Utente già esistente");
 			}
+			studenti.add(new Studente(login, password, nome, cognome, email, matricola, annoCorso));
 		}
 
 		if(password.equals(nome) || password.length() < 8){
@@ -58,7 +60,7 @@ public class Controller {
 	}
 
 	public boolean loginStudente (String login, String password) throws LoginException, CampoVuotoException, MissingStudentException{
-		if(login.isEmpty() || password.isEmpty()){
+		if(login.isBlank() || password.isBlank()){
 			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
 		}
 		int i,len;
@@ -68,12 +70,35 @@ public class Controller {
 		while(!studenteTrovato && i < len){
 			if(studenti.get(i).getLogin().equals(login)){
 				studenteTrovato = true;
+				continue;
 			}
 			i++;
 		}
 		if (!studenteTrovato)
 			throw new MissingStudentException("lo studente " + login + " non esiste.");
 		if(studenti.get(i).getPassword().equals(password))
+			return true;
+		throw new LoginException("Password non corretta");
+	}
+
+	public boolean loginDocente (String login, String password) throws LoginException, MissingTeacherException {
+		if(login.isBlank() || password.isBlank()){
+			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
+		}
+		int i,len;
+		i = 0;
+		len = docenti.size();
+		boolean docenteTrovato = false;
+		while(!docenteTrovato && i < len){
+			if(docenti.get(i).getLogin().equals(login)){
+				docenteTrovato = true;
+				continue;
+			}
+			i++;
+		}
+		if (!docenteTrovato)
+			throw new MissingTeacherException("lo docente " + login + " non esiste.");
+		if(docenti.get(i).getPassword().equals(password))
 			return true;
 		throw new LoginException("Password non corretta");
 	}

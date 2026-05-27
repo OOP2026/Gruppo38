@@ -4,6 +4,8 @@ import controller.Controller;
 import model.AnnoAccademico;
 import model.Studente;
 
+import javax.naming.AuthenticationException;
+import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,6 +55,7 @@ public class RegistrazioneStudente {
                 frame.dispose();
             }
         });
+
         registratiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,10 +66,17 @@ public class RegistrazioneStudente {
                 String password = String.valueOf(passwordField.getPassword());
                 String matricola = matricolaField.getText();
                 String selectedEnumStr = annoGroup.getSelection().getActionCommand();
+                System.out.println(selectedEnumStr);
                 AnnoAccademico annoCorso = AnnoAccademico.valueOf(selectedEnumStr);
 
-                mainFrame.setVisible(true);
-                frame.dispose();
+                try{
+                    controller.registrazioneStudente(login,password,nome,cognome,email,matricola,annoCorso);
+                    mainFrame.setVisible(true);
+                    frame.dispose();
+                } catch (AuthenticationException | LoginException ex) {
+                    JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
+                }
+
             }
         });
     }
