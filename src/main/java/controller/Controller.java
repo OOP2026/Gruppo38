@@ -1,5 +1,6 @@
 package controller;
 
+import exceptions.CampoVuotoException;
 import model.AnnoAccademico;
 import model.Docente;
 import model.Studente;
@@ -53,12 +54,6 @@ public class Controller {
 
 		studenti.add(new Studente(login, password, nome, cognome, email, matricola, annoCorso));
 
-	}
-
-	public static class CampoVuotoException extends Exception{
-		public CampoVuotoException(String message){
-			super(message);
-		}
 	}
 
 	public void loginStudente (String login, String password) throws LoginException, CampoVuotoException{

@@ -18,7 +18,7 @@ public class DocenteStudente {
     public DocenteStudente(JFrame mainFrame, Controller controller) {
         frame = new JFrame("Registrazione");
         frame.setContentPane(mainPanel);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         mainFrame.setVisible(false);
         frame.setVisible(true);

@@ -33,7 +33,7 @@ public class RegistrazioneDocente {
     public RegistrazioneDocente(JFrame mainFrame, Controller controller) {
         frame = new JFrame("RegistrazioneDocente");
         frame.setContentPane(mainPanel);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         mainFrame.setVisible(false);
         frame.setVisible(true);

@@ -1,6 +1,7 @@
 package gui;
 
 import controller.Controller;
+import exceptions.CampoVuotoException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -44,13 +45,11 @@ public class Home {
         loginButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*try {
+                try {
+                    new SchermataPrincipale(mainFrame,controller);
+                } catch (CampoVuotoException ex) {
 
-                } catch (Controller.CampoVuotoException ex) {
-
-                }*/
-                new SchermataPrincipale(mainFrame,controller);
-                mainFrame.setVisible(false);
+                }
             }
         });
     }
