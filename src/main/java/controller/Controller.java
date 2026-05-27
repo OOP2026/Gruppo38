@@ -1,6 +1,7 @@
 package controller;
 
 import exceptions.CampoVuotoException;
+import exceptions.MissingStudentException;
 import model.AnnoAccademico;
 import model.Docente;
 import model.Studente;
@@ -56,9 +57,24 @@ public class Controller {
 
 	}
 
-	public void loginStudente (String login, String password) throws LoginException, CampoVuotoException{
+	public boolean loginStudente (String login, String password) throws LoginException, CampoVuotoException, MissingStudentException{
 		if(login.isEmpty() || password.isEmpty()){
 			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
 		}
+		int i,len;
+		i = 0;
+		len = studenti.size();
+		boolean studenteTrovato = false;
+		while(!studenteTrovato && i < len){
+			if(studenti.get(i).getLogin().equals(login)){
+				studenteTrovato = true;
+			}
+			i++;
+		}
+		if (!studenteTrovato)
+			throw new MissingStudentException("lo studente " + login + " non esiste.");
+		if(studenti.get(i).getPassword().equals(password))
+			return true;
+		throw new LoginException("Password non corretta");
 	}
 }

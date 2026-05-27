@@ -2,7 +2,9 @@ package gui;
 
 import controller.Controller;
 import exceptions.CampoVuotoException;
+import exceptions.MissingStudentException;
 
+import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,10 +47,15 @@ public class Home {
         loginButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    new SchermataPrincipale(mainFrame,controller);
-                } catch (CampoVuotoException ex) {
+                String login,password;
+                login = usernameField.getText();
+                password = passwordField.getText();
 
+                try {
+                    if(controller.loginStudente(login,password))
+                        new SchermataPrincipale(mainFrame,controller);
+                } catch (CampoVuotoException | LoginException | MissingStudentException ex) {
+                    JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
                 }
             }
         });
