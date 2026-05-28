@@ -1,8 +1,7 @@
 package gui;
 
 import controller.Controller;
-import model.AnnoAccademico;
-import model.Studente;
+import exceptions.CampoVuotoException;
 
 import javax.naming.AuthenticationException;
 import javax.security.auth.login.LoginException;
@@ -44,10 +43,6 @@ public class RegistrazioneStudente {
         mainFrame.setVisible(false);
         frame.setVisible(true);
 
-        primoRadioButton.setActionCommand(AnnoAccademico.PRIMO.name());
-        secondoRadioButton.setActionCommand(AnnoAccademico.SECONDO.name());
-        terzoRadioButton.setActionCommand(AnnoAccademico.TERZO.name());
-
         annullaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,14 +62,13 @@ public class RegistrazioneStudente {
                 String matricola = matricolaField.getText();
                 String selectedEnumStr = annoGroup.getSelection().getActionCommand();
                 System.out.println(selectedEnumStr);
-                AnnoAccademico annoCorso = AnnoAccademico.valueOf(selectedEnumStr);
 
                 try{
-                    controller.registrazioneStudente(login,password,nome,cognome,email,matricola,annoCorso);
+                    controller.registrazioneStudente(login,password,nome,cognome,email,matricola,selectedEnumStr);
                     mainFrame.setVisible(true);
                     frame.dispose();
-                } catch (AuthenticationException | LoginException ex) {
-                    JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
+                } catch (AuthenticationException | LoginException | CampoVuotoException ex) {
+                    JOptionPane.showMessageDialog(frame,"Login Error: " + ex.getMessage());
                 }
 
             }

@@ -1,6 +1,7 @@
 package gui;
 
 import controller.Controller;
+import exceptions.CampoVuotoException;
 import model.AnnoAccademico;
 
 import javax.naming.AuthenticationException;
@@ -22,7 +23,6 @@ public class RegistrazioneDocente {
     private JRadioButton noRadioButton;
     private JPanel logoPanel;
     private JLabel logoLabel;
-    private JLabel nomeLabel;
     private JLabel cognomeLabel;
     private JLabel emailLabel;
     private JLabel usernameLabel;
@@ -30,8 +30,9 @@ public class RegistrazioneDocente {
     private JLabel responsabileLabel;
     private JRadioButton radioButton3;
     private JPanel buttonPanel;
+    private JLabel nomeLabel;
+    private ButtonGroup ResponsabileGroup;
     private JFrame frame;
-    private ButtonGroup Responsabile;
 
     public RegistrazioneDocente(JFrame mainFrame, Controller controller) {
         frame = new JFrame("RegistrazioneDocente");
@@ -55,15 +56,14 @@ public class RegistrazioneDocente {
                 String email = emailField.getText();
                 String login = usernameField.getText();
                 String password = String.valueOf(passwordField.getPassword());
-                String selectedEnumStr = Responsabile.getSelection().getActionCommand();
+                String selectedEnumStr = ResponsabileGroup.getSelection().getActionCommand();
                 System.out.println(selectedEnumStr);
-                boolean isResponsabile = selectedEnumStr.equals("Si");
 
                 try {
-                    controller.registrazioneDocente(login,password,nome,cognome,email,isResponsabile);
+                    controller.registrazioneDocente(login,password,nome,cognome,email,selectedEnumStr);
                     mainFrame.setVisible(true);
                     frame.dispose();
-                } catch (AuthenticationException | LoginException ex) {
+                } catch (AuthenticationException | LoginException | CampoVuotoException ex) {
                     JOptionPane.showMessageDialog(frame, "Login Error: " + ex.getMessage());
                 }
             }
