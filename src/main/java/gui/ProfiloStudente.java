@@ -35,11 +35,5 @@ public class ProfiloStudente {
         frame.pack();
         mainFrame.setVisible(false);
         frame.setVisible(true);
-        getNomeLabel.addContainerListener(new ContainerAdapter() {
-            @Override
-            public void componentAdded(ContainerEvent e) {
-                super.componentAdded(e);
-            }
-        });
     }
 }

@@ -79,7 +79,7 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Nome:"/>
                 </properties>
               </component>
               <component id="3ca13" class="javax.swing.JLabel" binding="cognomeLabel">
@@ -87,7 +87,7 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Cognome:"/>
                 </properties>
               </component>
               <component id="7af8c" class="javax.swing.JLabel" binding="matricolaLabel">
@@ -95,7 +95,7 @@
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Matricola:"/>
                 </properties>
               </component>
               <component id="7419e" class="javax.swing.JLabel" binding="emailLabel">
@@ -103,7 +103,7 @@
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Email:"/>
                 </properties>
               </component>
               <component id="5ad65" class="javax.swing.JLabel" binding="annoCorsoLabel">
@@ -111,7 +111,7 @@
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Anno Corso:"/>
                 </properties>
               </component>
             </children>
@@ -146,10 +146,10 @@
         <children>
           <component id="d8514" class="javax.swing.JLabel" binding="logoLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Label"/>
+              <text value="logo"/>
             </properties>
           </component>
         </children>
