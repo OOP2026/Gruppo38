@@ -115,12 +115,12 @@
                   <text value="Login Docente"/>
                 </properties>
               </component>
-              <component id="a7f41" class="javax.swing.JButton" binding="registatiButton" default-binding="true">
+              <component id="a7f41" class="javax.swing.JButton" binding="registratiButton">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Registati"/>
+                  <text value="Registrati"/>
                 </properties>
               </component>
             </children>

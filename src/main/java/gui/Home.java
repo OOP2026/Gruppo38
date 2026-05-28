@@ -3,6 +3,7 @@ package gui;
 import controller.Controller;
 import exceptions.CampoVuotoException;
 import exceptions.MissingStudentException;
+import exceptions.MissingTeacherException;
 
 import javax.security.auth.login.LoginException;
 import javax.swing.*;
@@ -27,7 +28,6 @@ public class Home {
     private JLabel text3;
     private JButton loginStudenteButton;
     private JButton loginDocenteButton;
-    private JButton registatiButton;
     private static JFrame mainFrame;
     private static Controller controller;
 
@@ -47,7 +47,7 @@ public class Home {
                 new DocenteStudente(mainFrame,controller);
             }
         });
-        loginStudente.addActionListener(new ActionListener() {
+        loginStudenteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String login,password;
@@ -73,7 +73,7 @@ public class Home {
                 try {
                     if(controller.loginDocente(login,password))
                         new SchermataPrincipale(mainFrame,controller);
-                } catch (CampoVuotoException | LoginException | MissingStudentException ex) {
+                } catch (CampoVuotoException | LoginException | MissingTeacherException ex) {
                     JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
                 }
 
