@@ -16,7 +16,6 @@ public class Home {
     private JPanel mainPanel;
     private JButton registratiButton;
     private JPanel rightPanel;
-    private JButton loginStudente;
     private JPasswordField passwordField;
     private JLabel passwordLabel;
     private JLabel usernameLabel;
@@ -50,13 +49,12 @@ public class Home {
         loginStudenteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String login,password;
-                login = usernameField.getText();
-                password = passwordField.getText();
+                String login = usernameField.getText();
+                String password = passwordField.getText();
 
                 try {
                     if(controller.loginStudente(login,password))
-                        new SchermataPrincipale(mainFrame,controller);
+                        new ProfiloStudente(mainFrame,controller);
                 } catch (CampoVuotoException | LoginException | MissingStudentException ex) {
                     JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
                 }
@@ -66,13 +64,12 @@ public class Home {
         loginDocenteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String login,password;
-                login = usernameField.getText();
-                password = passwordField.getText();
+                String login = usernameField.getText();
+                String password = passwordField.getText();
 
                 try {
                     if(controller.loginDocente(login,password))
-                        new SchermataPrincipale(mainFrame,controller);
+                        new ProfiloDocente(mainFrame,controller);
                 } catch (CampoVuotoException | LoginException | MissingTeacherException ex) {
                     JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
                 }

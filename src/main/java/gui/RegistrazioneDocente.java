@@ -2,7 +2,6 @@ package gui;
 
 import controller.Controller;
 import exceptions.CampoVuotoException;
-import model.AnnoAccademico;
 
 import javax.naming.AuthenticationException;
 import javax.security.auth.login.LoginException;
@@ -28,7 +27,6 @@ public class RegistrazioneDocente {
     private JLabel usernameLabel;
     private JLabel passwordLabel;
     private JLabel responsabileLabel;
-    private JRadioButton radioButton3;
     private JPanel buttonPanel;
     private JLabel nomeLabel;
     private ButtonGroup ResponsabileGroup;

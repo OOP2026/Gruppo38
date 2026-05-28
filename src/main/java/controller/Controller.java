@@ -67,11 +67,11 @@ public class Controller {
 		if(login.isBlank() || password.isBlank()){
 			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
 		}
-		int i,len;
-		i = 0;
-		len = studenti.size();
+
+		int i = 0;
+		int lenS = studenti.size();
 		boolean studenteTrovato = false;
-		while(!studenteTrovato && i < len){
+		while(!studenteTrovato && i < lenS){
 			if(studenti.get(i).getLogin().equals(login)){
 				studenteTrovato = true;
 				continue;
@@ -89,11 +89,11 @@ public class Controller {
 		if(login.isBlank() || password.isBlank()){
 			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
 		}
-		int i,len;
-		i = 0;
-		len = docenti.size();
+
+		int i = 0;
+		int lenD = docenti.size();
 		boolean docenteTrovato = false;
-		while(!docenteTrovato && i < len){
+		while(!docenteTrovato && i < lenD){
 			if(docenti.get(i).getLogin().equals(login)){
 				docenteTrovato = true;
 				continue;
