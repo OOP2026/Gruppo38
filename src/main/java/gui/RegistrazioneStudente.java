@@ -2,7 +2,7 @@ package gui;
 
 import controller.Controller;
 import exceptions.CampoVuotoException;
-import model.AnnoAccademico;
+//import model.AnnoAccademico;
 
 import javax.naming.AuthenticationException;
 import javax.security.auth.login.LoginException;
@@ -44,9 +44,9 @@ public class RegistrazioneStudente {
         mainFrame.setVisible(false);
         frame.setVisible(true);
 
-        primoRadioButton.setActionCommand(AnnoAccademico.PRIMO.name());
-        secondoRadioButton.setActionCommand(AnnoAccademico.SECONDO.name());
-        terzoRadioButton.setActionCommand(AnnoAccademico.TERZO.name());
+//        primoRadioButton.setActionCommand(AnnoAccademico.PRIMO.name());
+//        secondoRadioButton.setActionCommand(AnnoAccademico.SECONDO.name());
+//        terzoRadioButton.setActionCommand(AnnoAccademico.TERZO.name());
 
         annullaButton.addActionListener(new ActionListener() {
             @Override
@@ -65,7 +65,19 @@ public class RegistrazioneStudente {
                 String login = usernameField.getText();
                 String password = String.valueOf(passwordField.getPassword());
                 String matricola = matricolaField.getText();
-                String selectedEnumStr = annoGroup.getSelection().getActionCommand();
+                String selectedEnumStr;
+                if(primoRadioButton.isSelected()) {
+                    selectedEnumStr =  "PRIMO";
+                }
+                else if(secondoRadioButton.isSelected()) {
+                    selectedEnumStr = "SECONDO";
+                }
+                else if(terzoRadioButton.isSelected()) {
+                    selectedEnumStr = "TERZO";
+                }
+                else{
+                    selectedEnumStr = "";
+                }
                 System.out.println(selectedEnumStr);
 
                 try{

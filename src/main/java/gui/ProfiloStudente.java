@@ -32,14 +32,16 @@ public class ProfiloStudente {
         frame = new JFrame("Registrazione");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
         mainFrame.setVisible(false);
-        frame.setVisible(true);
 
         getNomeLabel.setText(controller.getNomeStudente(login));
         getCognomeLabel.setText(controller.getCognomeStudente(login));
         getMatricolaLabel.setText(controller.getMatricolaStudente(login));
         getEmailLabel.setText(controller.getEmailStudente(login));
         getAnnoCorsoLabel.setText(controller.getAnnoCorsoStudente(login));
+
+        frame.pack();
+        frame.setVisible(true);
+
     }
 }
