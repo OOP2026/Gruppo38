@@ -54,7 +54,7 @@ public class Home {
 
                 try {
                     if(controller.loginStudente(login,password))
-                        new ProfiloStudente(mainFrame,controller);
+                        new ProfiloStudente(mainFrame,controller, login);
                 } catch (CampoVuotoException | LoginException | MissingStudentException ex) {
                     JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
                 }
