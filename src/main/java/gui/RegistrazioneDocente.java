@@ -54,7 +54,17 @@ public class RegistrazioneDocente {
                 String email = emailField.getText();
                 String login = usernameField.getText();
                 String password = String.valueOf(passwordField.getPassword());
-                String selectedEnumStr = ResponsabileGroup.getSelection().getActionCommand();
+                String selectedEnumStr;
+
+                if(siRadioButton.isSelected()) {
+                    selectedEnumStr =  "SI";
+                }
+                else if(noRadioButton.isSelected()) {
+                    selectedEnumStr = "NO";
+                }
+                else{
+                    selectedEnumStr = "";
+                }
                 System.out.println(selectedEnumStr);
 
                 try {

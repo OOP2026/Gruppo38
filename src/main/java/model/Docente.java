@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Docente extends Utente {
-    private boolean isResponsabile;
+    private Boolean isResponsabile;
     private List<Insegnamento> materie;
     private List<Vincolo> vincoli;
     private List<Lezione> lezioni;
@@ -62,7 +62,7 @@ public class Docente extends Utente {
         System.out.println("Richiestagestita.");
     }
 
-    public boolean isResponsabile() {
+    public Boolean isResponsabile() {
         return isResponsabile;
     }
 

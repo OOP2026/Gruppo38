@@ -69,7 +69,7 @@ public class Home {
 
                 try {
                     if(controller.loginDocente(login,password))
-                        new ProfiloDocente(mainFrame,controller);
+                        new ProfiloDocente(mainFrame,controller, login);
                 } catch (CampoVuotoException | LoginException | MissingTeacherException ex) {
                     JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
                 }

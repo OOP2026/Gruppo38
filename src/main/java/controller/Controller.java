@@ -32,7 +32,7 @@ public class Controller {
 			throw new AuthenticationException("Password corta");
 		}
 
-		boolean boolIsResponsabile = isResponsabile.equals("Si");
+		boolean boolIsResponsabile = isResponsabile.equals("SI");
 
         docenti.add(new Docente(login, password, nome, cognome, email, boolIsResponsabile));
 	}
@@ -104,7 +104,7 @@ public class Controller {
 		throw new LoginException("Password non corretta");
 	}
 
-	public String getNomeStudente(String login) throws MissingStudentException {
+	public ArrayList<String> getAttributiStudente(String login) throws MissingStudentException {
 		boolean studenteTrovato = false;
 		int i = 0;
 		while(!studenteTrovato && i < studenti.size()){
@@ -114,68 +114,34 @@ public class Controller {
 			i++;
 		}
 		if (studenteTrovato) {
-			return studenti.get(i-1).getNome();
+			ArrayList<String> attributiStudente = new ArrayList<>();
+			attributiStudente.add(studenti.get(i-1).getNome());
+			attributiStudente.add(studenti.get(i-1).getCognome());
+			attributiStudente.add(studenti.get(i-1).getMatricola());
+			attributiStudente.add(studenti.get(i-1).getEmail());
+			attributiStudente.add(studenti.get(i-1).getAnnoCorso().name());
+			return attributiStudente;
 		}
-		throw new MissingStudentException("lo studente " + login + " non esiste.");
+		throw new MissingStudentException("Lo studente " + login + " non esiste.");
 	}
 
-	public String getCognomeStudente(String login) throws MissingStudentException {
-		boolean studenteTrovato = false;
+	public ArrayList<String> getAttributiDocente(String login) throws MissingTeacherException {
+		boolean docenteTrovato = false;
 		int i = 0;
-		while(!studenteTrovato && i < studenti.size()){
-			if(studenti.get(i).getLogin().equals(login)){
-				studenteTrovato = true;
+		while(!docenteTrovato && i < docenti.size()){
+			if(docenti.get(i).getLogin().equals(login)){
+				docenteTrovato = true;
 			}
 			i++;
 		}
-		if (studenteTrovato) {
-			return studenti.get(i-1).getCognome();
+		if (docenteTrovato) {
+			ArrayList<String> attributiDocente = new ArrayList<>();
+			attributiDocente.add(docenti.get(i-1).getNome());
+			attributiDocente.add(docenti.get(i-1).getCognome());
+			attributiDocente.add(docenti.get(i-1).getEmail());
+			attributiDocente.add(docenti.get(i-1).isResponsabile().toString());
+			return attributiDocente;
 		}
-		throw new MissingStudentException("lo studente " + login + " non esiste.");
-	}
-
-	public String getMatricolaStudente(String login) throws MissingStudentException {
-		boolean studenteTrovato = false;
-		int i = 0;
-		while(!studenteTrovato && i < studenti.size()){
-			if(studenti.get(i).getLogin().equals(login)){
-				studenteTrovato = true;
-			}
-			i++;
-		}
-		if (studenteTrovato) {
-			return studenti.get(i-1).getMatricola();
-		}
-		throw new MissingStudentException("lo studente " + login + " non esiste.");
-	}
-
-	public String getEmailStudente(String login) throws MissingStudentException {
-		boolean studenteTrovato = false;
-		int i = 0;
-		while(!studenteTrovato && i < studenti.size()){
-			if(studenti.get(i).getLogin().equals(login)){
-				studenteTrovato = true;
-			}
-			i++;
-		}
-		if (studenteTrovato) {
-			return studenti.get(i-1).getEmail();
-		}
-		throw new MissingStudentException("lo studente " + login + " non esiste.");
-	}
-
-	public String getAnnoCorsoStudente(String login) throws MissingStudentException {
-		boolean studenteTrovato = false;
-		int i = 0;
-		while(!studenteTrovato && i < studenti.size()){
-			if(studenti.get(i).getLogin().equals(login)){
-				studenteTrovato = true;
-			}
-			i++;
-		}
-		if (studenteTrovato) {
-			return studenti.get(i-1).getAnnoCorso().name();
-		}
-		throw new MissingStudentException("lo studente " + login + " non esiste.");
+		throw new MissingTeacherException("Il docente " + login + " non esiste.");
 	}
 }

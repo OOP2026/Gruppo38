@@ -1,10 +1,12 @@
 package gui;
 
 import controller.Controller;
+import model.Studente;
 
 import javax.swing.*;
 import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
+import java.util.ArrayList;
 
 public class ProfiloStudente {
 
@@ -33,12 +35,13 @@ public class ProfiloStudente {
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(false);
+        ArrayList<String> studente = controller.getAttributiStudente(login);
 
-        getNomeLabel.setText(controller.getNomeStudente(login));
-        getCognomeLabel.setText(controller.getCognomeStudente(login));
-        getMatricolaLabel.setText(controller.getMatricolaStudente(login));
-        getEmailLabel.setText(controller.getEmailStudente(login));
-        getAnnoCorsoLabel.setText(controller.getAnnoCorsoStudente(login));
+        getNomeLabel.setText(studente.get(0));
+        getCognomeLabel.setText(studente.get(1));
+        getMatricolaLabel.setText(studente.get(2));
+        getEmailLabel.setText(studente.get(3));
+        getAnnoCorsoLabel.setText(studente.get(4));
 
         frame.pack();
         frame.setVisible(true);
