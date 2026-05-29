@@ -1,11 +1,10 @@
 package gui;
 
 import controller.Controller;
-import model.Studente;
 
 import javax.swing.*;
-import java.awt.event.ContainerAdapter;
-import java.awt.event.ContainerEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ProfiloStudente {
@@ -29,6 +28,7 @@ public class ProfiloStudente {
     private JLabel getAnnoCorsoLabel;
     private JPanel logoPanel;
     private JLabel logoLabel;
+    private JButton logOutButton;
 
     public ProfiloStudente (JFrame mainFrame, Controller controller, String login) {
         frame = new JFrame("Registrazione");
@@ -46,5 +46,11 @@ public class ProfiloStudente {
         frame.pack();
         frame.setVisible(true);
 
+        ricercaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 }

@@ -28,6 +28,7 @@ public class ProfiloDocente {
     private JLabel getCognomeLabel;
     private JLabel getEmailLabel;
     private JLabel getResponsabileLabel;
+    private JButton logOutButton;
 
     public ProfiloDocente (JFrame mainFrame, Controller controller, String login) {
         frame = new JFrame("Registrazione");
@@ -50,8 +51,19 @@ public class ProfiloDocente {
         frame.pack();
         frame.setVisible(true);
 
-
         modificaOrarioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        insegnamentiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        ricercaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
