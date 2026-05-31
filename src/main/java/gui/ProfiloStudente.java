@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ProfiloStudente {
 
-    private JFrame frame;
+    private JFrame profileFrame;
     private JPanel mainPanel;
     private JPanel leftPanel;
     private JPanel rightPanel;
@@ -31,9 +31,9 @@ public class ProfiloStudente {
     private JButton logOutButton;
 
     public ProfiloStudente (JFrame mainFrame, Controller controller, String login) {
-        frame = new JFrame("Profilo Studente");
-        frame.setContentPane(mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        profileFrame = new JFrame("Profilo Studente");
+        profileFrame.setContentPane(mainPanel);
+        profileFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(false);
         ArrayList<String> studente = controller.getAttributiStudente(login);
 
@@ -43,21 +43,21 @@ public class ProfiloStudente {
         getEmailLabel.setText(studente.get(3));
         getAnnoCorsoLabel.setText(studente.get(4));
 
-        frame.pack();
-        frame.setVisible(true);
+        profileFrame.pack();
+        profileFrame.setVisible(true);
 
         ricercaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Ricerca(mainFrame,controller, login);
-                frame.dispose();
+                new Ricerca(mainFrame, profileFrame,controller, login);
+                profileFrame.setVisible(false);
             }
         });
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainFrame.setVisible(true);
-                frame.dispose();
+                profileFrame.dispose();
             }
         });
     }

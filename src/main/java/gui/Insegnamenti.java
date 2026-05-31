@@ -6,39 +6,35 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Ricerca {
+public class Insegnamenti {
     private JPanel mainPanel;
-    private JButton docentiButton;
-    private JButton insegnamentiButton;
-    private JButton giorniSettimanaButton;
-    private JButton auleButton;
-    private JButton logOutButton;
+    private JPanel leftPanel;
+    private JPanel rightPanel;
+    private JList insegnamentiList;
+    private JLabel ListaLabel;
+    private JButton creaNuovoInsegnamentoButton;
+    private JPanel buttonPanel;
     private JButton profiloButton;
-    private JLabel textLabel;
-    private JPanel rightButtonPanel;
-    private JPanel leftButtonPanel;
-    private JPanel profiloTextPanel;
-    private JPanel logOutPanel;
+    private JButton logOutButton;
     private JFrame frame;
 
-    public Ricerca(JFrame mainFrame, JFrame profileFrame, Controller controller, String login) {
-        frame = new JFrame("Ricerca");
+    public Insegnamenti(JFrame mainFrame, JFrame profiloFrame, Controller controller, String login) {
+        frame = new JFrame("Insegnamenti");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
-        logOutButton.addActionListener(new ActionListener() {
+        creaNuovoInsegnamentoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.setVisible(true);
-                frame.dispose();
+
             }
         });
         profiloButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                profileFrame.setVisible(true);
+                new ProfiloDocente(frame,controller,login);
                 frame.dispose();
             }
         });

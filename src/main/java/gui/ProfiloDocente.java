@@ -1,6 +1,7 @@
 package gui;
 
 import controller.Controller;
+import model.Insegnamento;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,8 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ProfiloDocente {
-
-    private JFrame frame;
+    private JFrame profileFrame;
     private JPanel mainPanel;
     private JPanel logoPanel;
     private JPanel rightPanel;
@@ -31,9 +31,9 @@ public class ProfiloDocente {
     private JButton logOutButton;
 
     public ProfiloDocente (JFrame mainFrame, Controller controller, String login) {
-        frame = new JFrame("Profilo Docente");
-        frame.setContentPane(mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        profileFrame = new JFrame("Profilo Docente");
+        profileFrame.setContentPane(mainPanel);
+        profileFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(false);
         ArrayList<String> docente = controller.getAttributiDocente(login);
 
@@ -48,8 +48,8 @@ public class ProfiloDocente {
             modificaOrarioButton.setEnabled(false);
         }
 
-        frame.pack();
-        frame.setVisible(true);
+        profileFrame.pack();
+        profileFrame.setVisible(true);
 
         modificaOrarioButton.addActionListener(new ActionListener() {
             @Override
@@ -60,20 +60,22 @@ public class ProfiloDocente {
         insegnamentiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new Insegnamenti(mainFrame, profileFrame,controller,login);
+                profileFrame.dispose();
             }
         });
         ricercaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Ricerca(mainFrame,controller, login);
+                new Ricerca(mainFrame, profileFrame,controller, login);
+                profileFrame.setVisible(false);
             }
         });
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainFrame.setVisible(true);
-                frame.dispose();
+                profileFrame.dispose();
             }
         });
     }
