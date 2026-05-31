@@ -16,26 +16,34 @@ public class Insegnamenti {
     private JPanel buttonPanel;
     private JButton profiloButton;
     private JButton logOutButton;
-    private JFrame frame;
+    private JFrame insegnamentoFrame;
 
-    public Insegnamenti(JFrame mainFrame, JFrame profiloFrame, Controller controller, String login) {
-        frame = new JFrame("Insegnamenti");
-        frame.setContentPane(mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+    public Insegnamenti(JFrame mainFrame, JFrame profileFrame, Controller controller, String login) {
+        insegnamentoFrame = new JFrame("Insegnamenti");
+        insegnamentoFrame.setContentPane(mainPanel);
+        insegnamentoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        insegnamentoFrame.pack();
+        insegnamentoFrame.setVisible(true);
 
         creaNuovoInsegnamentoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new CreaIns(insegnamentoFrame, controller, login);
+                insegnamentoFrame.dispose();
             }
         });
         profiloButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ProfiloDocente(frame,controller,login);
-                frame.dispose();
+                profileFrame.setVisible(true);
+                insegnamentoFrame.dispose();
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame.setVisible(true);
+                insegnamentoFrame.dispose();
             }
         });
     }
