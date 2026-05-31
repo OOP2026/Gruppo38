@@ -54,7 +54,7 @@ public class Home {
 
                 try {
                     if(controller.loginStudente(login,password))
-                        new ProfiloStudente(mainFrame,controller, login);
+                        new ProfiloStudente(mainFrame, controller, login);
                 } catch (CampoVuotoException | LoginException | MissingStudentException ex) {
                     JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
                 }
@@ -69,7 +69,7 @@ public class Home {
 
                 try {
                     if(controller.loginDocente(login,password))
-                        new ProfiloDocente(mainFrame,controller, login);
+                        new ProfiloDocente(mainFrame, controller, login);
                 } catch (CampoVuotoException | LoginException | MissingTeacherException ex) {
                     JOptionPane.showMessageDialog(mainFrame,ex.getMessage());
                 }

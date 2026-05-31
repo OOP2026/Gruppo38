@@ -37,7 +37,7 @@ public class RegistrazioneStudente {
     private JFrame frame;
 
     public RegistrazioneStudente(JFrame mainFrame, Controller controller) {
-        frame = new JFrame("RegistrazioneStudente");
+        frame = new JFrame("Registrazione Studente");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

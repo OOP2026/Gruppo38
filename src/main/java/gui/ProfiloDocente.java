@@ -31,7 +31,7 @@ public class ProfiloDocente {
     private JButton logOutButton;
 
     public ProfiloDocente (JFrame mainFrame, Controller controller, String login) {
-        frame = new JFrame("Registrazione");
+        frame = new JFrame("Profilo Docente");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(false);
@@ -66,7 +66,14 @@ public class ProfiloDocente {
         ricercaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new Ricerca(mainFrame,controller, login);
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame.setVisible(true);
+                frame.dispose();
             }
         });
     }
