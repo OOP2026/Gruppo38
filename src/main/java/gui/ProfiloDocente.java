@@ -61,21 +61,19 @@ public class ProfiloDocente {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new Insegnamenti(mainFrame, profileFrame,controller,login);
-                profileFrame.dispose();
             }
         });
         ricercaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new Ricerca(mainFrame, profileFrame,controller, login);
-                profileFrame.setVisible(false);
             }
         });
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.setVisible(true);
                 profileFrame.dispose();
+                mainFrame.setVisible(true);
             }
         });
     }

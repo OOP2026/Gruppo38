@@ -23,6 +23,7 @@ public class Insegnamenti {
         insegnamentoFrame.setContentPane(mainPanel);
         insegnamentoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         insegnamentoFrame.pack();
+        profileFrame.setVisible(false);
         insegnamentoFrame.setVisible(true);
 
         creaNuovoInsegnamentoButton.addActionListener(new ActionListener() {
@@ -35,15 +36,16 @@ public class Insegnamenti {
         profiloButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                profileFrame.setVisible(true);
                 insegnamentoFrame.dispose();
+                profileFrame.setVisible(true);
             }
         });
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.setVisible(true);
+                profileFrame.dispose();
                 insegnamentoFrame.dispose();
+                mainFrame.setVisible(true);
             }
         });
     }

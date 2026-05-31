@@ -26,13 +26,15 @@ public class Ricerca {
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        profileFrame.setVisible(false);
         frame.setVisible(true);
 
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.setVisible(true);
                 frame.dispose();
+                profileFrame.dispose();
+                mainFrame.setVisible(true);
             }
         });
         profiloButton.addActionListener(new ActionListener() {

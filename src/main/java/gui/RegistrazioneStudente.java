@@ -2,7 +2,6 @@ package gui;
 
 import controller.Controller;
 import exceptions.CampoVuotoException;
-//import model.AnnoAccademico;
 
 import javax.naming.AuthenticationException;
 import javax.security.auth.login.LoginException;
@@ -43,10 +42,6 @@ public class RegistrazioneStudente {
         frame.pack();
         mainFrame.setVisible(false);
         frame.setVisible(true);
-
-//        primoRadioButton.setActionCommand(AnnoAccademico.PRIMO.name());
-//        secondoRadioButton.setActionCommand(AnnoAccademico.SECONDO.name());
-//        terzoRadioButton.setActionCommand(AnnoAccademico.TERZO.name());
 
         annullaButton.addActionListener(new ActionListener() {
             @Override

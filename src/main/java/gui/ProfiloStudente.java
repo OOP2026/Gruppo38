@@ -56,8 +56,8 @@ public class ProfiloStudente {
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.setVisible(true);
                 profileFrame.dispose();
+                mainFrame.setVisible(true);
             }
         });
     }
