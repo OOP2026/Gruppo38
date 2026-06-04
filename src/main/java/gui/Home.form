@@ -115,12 +115,20 @@
                   <text value="Login Docente"/>
                 </properties>
               </component>
-              <component id="a7f41" class="javax.swing.JButton" binding="registratiButton">
+              <component id="5d492" class="javax.swing.JButton" binding="registrazioneDocenteButton" default-binding="true">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Registrati"/>
+                  <text value="Registrazione Docente"/>
+                </properties>
+              </component>
+              <component id="a7f41" class="javax.swing.JButton" binding="registrazioneStudenteButton">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Registrazione Studente"/>
                 </properties>
               </component>
             </children>

@@ -14,7 +14,7 @@ public class Home {
     private JPanel leftPanel;
     private JTextField usernameField;
     private JPanel mainPanel;
-    private JButton registratiButton;
+    private JButton registrazioneStudenteButton;
     private JPanel rightPanel;
     private JPasswordField passwordField;
     private JLabel passwordLabel;
@@ -27,6 +27,7 @@ public class Home {
     private JLabel text3;
     private JButton loginStudenteButton;
     private JButton loginDocenteButton;
+    private JButton registrazioneDocenteButton;
     private static JFrame mainFrame;
     private static Controller controller;
 
@@ -40,10 +41,16 @@ public class Home {
     }
 
     public Home() {
-        registratiButton.addActionListener(new ActionListener() {
+        registrazioneStudenteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new DocenteStudente(mainFrame,controller);
+                new RegistrazioneStudente(mainFrame,controller);
+            }
+        });
+        registrazioneDocenteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new RegistrazioneDocente(mainFrame,controller);
             }
         });
         loginStudenteButton.addActionListener(new ActionListener() {
