@@ -14,7 +14,7 @@ public class Insegnamenti {
     private JPanel leftPanel;
     private JPanel rightPanel;
     private JList<String> insegnamentiList;
-    private JLabel ListaLabel;
+    private JLabel listaLabel;
     private JButton creaNuovoInsegnamentoButton;
     private JPanel buttonPanel;
     private JButton profiloButton;
@@ -45,7 +45,7 @@ public class Insegnamenti {
         creaNuovoInsegnamentoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new CreaIns(insegnamentoFrame, controller, login);
+                new CreaIns(insegnamentoFrame, controller);
                 insegnamentoFrame.dispose();
             }
         });

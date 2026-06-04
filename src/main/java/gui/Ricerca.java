@@ -21,7 +21,7 @@ public class Ricerca {
     private JPanel logOutPanel;
     private JFrame frame;
 
-    public Ricerca(JFrame mainFrame, JFrame profileFrame, Controller controller, String login) {
+    public Ricerca(JFrame mainFrame, JFrame profileFrame, Controller controller) {
         frame = new JFrame("Ricerca");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

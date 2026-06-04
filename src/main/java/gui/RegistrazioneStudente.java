@@ -73,7 +73,6 @@ public class RegistrazioneStudente {
                 else{
                     selectedEnumStr = "";
                 }
-                System.out.println(selectedEnumStr);
 
                 try{
                     controller.registrazioneStudente(login,password,nome,cognome,email,matricola,selectedEnumStr);

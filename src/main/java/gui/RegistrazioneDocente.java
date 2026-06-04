@@ -29,7 +29,7 @@ public class RegistrazioneDocente {
     private JLabel responsabileLabel;
     private JPanel buttonPanel;
     private JLabel nomeLabel;
-    private ButtonGroup ResponsabileGroup;
+    private ButtonGroup responsabileGroup;
     private JFrame frame;
 
     public RegistrazioneDocente(JFrame mainFrame, Controller controller) {
@@ -65,7 +65,6 @@ public class RegistrazioneDocente {
                 else{
                     selectedEnumStr = "";
                 }
-                System.out.println(selectedEnumStr);
 
                 try {
                     controller.registrazioneDocente(login,password,nome,cognome,email,selectedEnumStr);

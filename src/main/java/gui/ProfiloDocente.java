@@ -64,7 +64,7 @@ public class ProfiloDocente {
         ricercaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Ricerca(mainFrame, profileFrame,controller, login);
+                new Ricerca(mainFrame, profileFrame,controller);
             }
         });
         logOutButton.addActionListener(new ActionListener() {

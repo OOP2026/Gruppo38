@@ -162,7 +162,7 @@
     </children>
   </grid>
   <buttonGroups>
-    <group name="ResponsabileGroup" bound="true">
+    <group name="responsabileGroup" bound="true">
       <member id="c2995"/>
       <member id="fd75f"/>
     </group>

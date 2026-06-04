@@ -23,14 +23,14 @@ public class CreaIns {
     private JPanel upperLabel;
     private JFrame frame;
 
-    public CreaIns(JFrame insegnamentoFrame, Controller controller, String login) {
+    public CreaIns(JFrame insegnamentoFrame, Controller controller) {
         frame = new JFrame("Crea Insegnamento");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
-        String anno[] = {"-SELECT-", "PRIMO", "SECONDO", "TERZO"};
+        String[] anno = {"-SELECT-", "PRIMO", "SECONDO", "TERZO"};
         annoComboBox.setModel(new DefaultComboBoxModel<>(anno));
 
         annullaButton.addActionListener(new ActionListener() {
