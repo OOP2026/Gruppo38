@@ -1,6 +1,7 @@
 package gui;
 
 import controller.Controller;
+import exceptions.CampoVuotoException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -29,11 +30,31 @@ public class CreaIns {
         frame.pack();
         frame.setVisible(true);
 
+        String anno[] = {"-SELECT-", "PRIMO", "SECONDO", "TERZO"};
+        annoComboBox.setModel(new DefaultComboBoxModel<>(anno));
+
         annullaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 insegnamentoFrame.setVisible(true);
                 frame.dispose();
+            }
+        });
+
+        creaInsegnamentoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String nome = nomeField.getText();
+                    int cfu = Integer.parseInt(cfuField.getText());
+                    String annoCorsoStr = annoComboBox.getSelectedItem().toString();
+
+                    controller.creazioneInsegnamento(nome, cfu, annoCorsoStr);
+                    insegnamentoFrame.setVisible(true);
+                    frame.dispose();
+                } catch (CampoVuotoException ex) {
+                    JOptionPane.showMessageDialog(frame,"Creazione Error: " + ex.getMessage());
+                }
             }
         });
     }

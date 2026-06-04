@@ -3,10 +3,7 @@ package controller;
 import exceptions.CampoVuotoException;
 import exceptions.MissingStudentException;
 import exceptions.MissingTeacherException;
-import model.AnnoAccademico;
-import model.Docente;
-import model.Studente;
-import model.Utente;
+import model.*;
 
 import javax.naming.AuthenticationException;
 import javax.security.auth.login.LoginException;
@@ -15,6 +12,7 @@ import java.util.ArrayList;
 public class Controller {
 	ArrayList<Studente> studenti = new ArrayList<>();
 	ArrayList<Docente> docenti = new ArrayList<>();
+	ArrayList<Insegnamento> insegnamenti = new ArrayList<>();
 
 	public void registrazioneDocente (String login, String password, String nome, String cognome, String email, String isResponsabile) throws LoginException, AuthenticationException, CampoVuotoException {
 
@@ -143,5 +141,14 @@ public class Controller {
 			return attributiDocente;
 		}
 		throw new MissingTeacherException("Il docente " + login + " non esiste.");
+	}
+
+	public void creazioneInsegnamento (String nome, int cfu, String annoCorsoStr) throws CampoVuotoException {
+		if (nome.isBlank() || cfu <= 0 || annoCorsoStr.isBlank()) {
+			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
+		}
+
+		AnnoAccademico annoCorso =  AnnoAccademico.valueOf(annoCorsoStr);
+		insegnamenti.add(new Insegnamento(nome, cfu, annoCorso));
 	}
 }

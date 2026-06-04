@@ -1,7 +1,6 @@
 package gui;
 
 import controller.Controller;
-import model.Insegnamento;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -41,7 +40,6 @@ public class ProfiloDocente {
         getCognomeLabel.setText(docente.get(1));
         getEmailLabel.setText(docente.get(2));
         getResponsabileLabel.setText(docente.get(3));
-
 
         if (!Boolean.parseBoolean(controller.getAttributiDocente(login).get(3))) {
             modificaOrarioButton.setToolTipText("Non sei Responsabile!");
