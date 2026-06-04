@@ -80,7 +80,7 @@ public class Controller {
 		throw new LoginException("Password non corretta");
 	}
 
-	public boolean loginDocente (String login, String password) throws LoginException, MissingTeacherException {
+	public boolean loginDocente (String login, String password) throws LoginException, CampoVuotoException, MissingTeacherException {
 		if(login.isBlank() || password.isBlank()){
 			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
 		}
@@ -143,12 +143,27 @@ public class Controller {
 		throw new MissingTeacherException("Il docente " + login + " non esiste.");
 	}
 
-	public void creazioneInsegnamento (String nome, int cfu, String annoCorsoStr) throws CampoVuotoException {
-		if (nome.isBlank() || cfu <= 0 || annoCorsoStr.isBlank()) {
+	public void creazioneInsegnamento (String nome, String cfuStr, String annoCorsoStr) throws CampoVuotoException, NumberFormatException {
+
+		if (nome.isBlank() || cfuStr.isBlank() || annoCorsoStr.equals("-SELECT-")) {
 			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
 		}
 
+		int cfu = Integer.parseInt(cfuStr.trim());
+
 		AnnoAccademico annoCorso =  AnnoAccademico.valueOf(annoCorsoStr);
 		insegnamenti.add(new Insegnamento(nome, cfu, annoCorso));
+	}
+
+	public ArrayList<String> getInsegnamentiFormattati() {
+		ArrayList<String> listaFormattata = new ArrayList<>();
+
+		for (Insegnamento ins : insegnamenti) {
+			String riga = ins.getNome() + " - " + ins.getCfu() + " CFU (" + ins.getAnno().name() + " ANNO)";
+
+			listaFormattata.add(riga);
+		}
+
+		return listaFormattata;
 	}
 }

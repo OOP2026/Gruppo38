@@ -46,14 +46,16 @@ public class CreaIns {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String nome = nomeField.getText();
-                    int cfu = Integer.parseInt(cfuField.getText());
+                    String cfuStr = cfuField.getText();
                     String annoCorsoStr = annoComboBox.getSelectedItem().toString();
 
-                    controller.creazioneInsegnamento(nome, cfu, annoCorsoStr);
+                    controller.creazioneInsegnamento(nome, cfuStr, annoCorsoStr);
                     insegnamentoFrame.setVisible(true);
                     frame.dispose();
                 } catch (CampoVuotoException ex) {
-                    JOptionPane.showMessageDialog(frame,"Creazione Error: " + ex.getMessage());
+                    JOptionPane.showMessageDialog(frame,"Errore creazione: " + ex.getMessage());
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame,"Errore formato: Il campo CFU deve contenere solo numeri validi!");
                 }
             }
         });
