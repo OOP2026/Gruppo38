@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class Controller {
 	ArrayList<Studente> studenti = new ArrayList<>();
 	ArrayList<Docente> docenti = new ArrayList<>();
-	ArrayList<Insegnamento> insegnamenti = new ArrayList<>();
 
 	public void registrazioneDocente (String login, String password, String nome, String cognome, String email, String isResponsabile) throws LoginException, AuthenticationException, CampoVuotoException {
 
@@ -143,27 +142,25 @@ public class Controller {
 		throw new MissingTeacherException("Il docente " + login + " non esiste.");
 	}
 
-	public void creazioneInsegnamento (String nome, String cfuStr, String annoCorsoStr) throws CampoVuotoException, NumberFormatException {
-
-		if (nome.isBlank() || cfuStr.isBlank() || annoCorsoStr.equals("-SELECT-")) {
-			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
+	public ArrayList<String> getInsegnamenti (String login) throws MissingTeacherException {
+		for(Docente docente : docenti){
+			if(docente.getLogin().equals(login)){
+				ArrayList<String> insegnamenti = new ArrayList<>();
+				for(Insegnamento ins : docente.getMaterie()){
+					insegnamenti.add(ins.getNome() + " - " + ins.getCfu() + " CFU- " + ins.getAnno().name() + " ANNO");
+				}
+				return insegnamenti;
+			}
 		}
-
-		int cfu = Integer.parseInt(cfuStr.trim());
-
-		AnnoAccademico annoCorso =  AnnoAccademico.valueOf(annoCorsoStr);
-		insegnamenti.add(new Insegnamento(nome, cfu, annoCorso));
+		throw new MissingTeacherException("Il docente " + login + " non esiste.");
 	}
-
-	public ArrayList<String> getInsegnamentiFormattati() {
-		ArrayList<String> listaFormattata = new ArrayList<>();
-
-		for (Insegnamento ins : insegnamenti) {
-			String riga = ins.getNome() + " - " + ins.getCfu() + " CFU (" + ins.getAnno().name() + " ANNO)";
-
-			listaFormattata.add(riga);
+	public void addInsegnamento (String login, String nome, String cfuStr, String annoCorsoStr) throws CampoVuotoException, NumberFormatException, MissingTeacherException {
+		for(Docente docente : docenti){
+			if(docente.getLogin().equals(login)){
+				docente.aggiungiMateria(nome, cfuStr, annoCorsoStr);
+				return;
+			}
 		}
-
-		return listaFormattata;
+		throw new MissingTeacherException("Il docente " + login + " non esiste.");
 	}
 }

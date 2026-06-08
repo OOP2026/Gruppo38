@@ -23,7 +23,7 @@ public class CreaIns {
     private JPanel upperLabel;
     private JFrame frame;
 
-    public CreaIns(JFrame insegnamentoFrame, Controller controller) {
+    public CreaIns(JFrame insegnamentoFrame, Controller controller, String login) {
         frame = new JFrame("Crea Insegnamento");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,7 +49,7 @@ public class CreaIns {
                     String cfuStr = cfuField.getText();
                     String annoCorsoStr = annoComboBox.getSelectedItem().toString();
 
-                    controller.creazioneInsegnamento(nome, cfuStr, annoCorsoStr);
+                    controller.addInsegnamento(login, nome, cfuStr, annoCorsoStr);
                     insegnamentoFrame.setVisible(true);
                     frame.dispose();
                 } catch (CampoVuotoException ex) {

@@ -21,6 +21,7 @@ public class Insegnamenti {
     private JButton logOutButton;
     private JFrame insegnamentoFrame;
     private DefaultListModel<String> modelloLista;
+    private String login;
 
     public Insegnamenti(JFrame mainFrame, JFrame profileFrame, Controller controller, String login) {
         insegnamentoFrame = new JFrame("Insegnamenti");
@@ -28,6 +29,7 @@ public class Insegnamenti {
         insegnamentoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         insegnamentoFrame.pack();
         profileFrame.setVisible(false);
+        this.login = login;
         insegnamentoFrame.setVisible(true);
 
         modelloLista = new DefaultListModel<>();
@@ -45,7 +47,7 @@ public class Insegnamenti {
         creaNuovoInsegnamentoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new CreaIns(insegnamentoFrame, controller);
+                new CreaIns(insegnamentoFrame, controller, login);
                 insegnamentoFrame.dispose();
             }
         });
@@ -69,12 +71,6 @@ public class Insegnamenti {
     private void aggiornaListaDati(Controller controller) {
         modelloLista.clear();
 
-        List<String> datiInsegnamenti = controller.getInsegnamentiFormattati();
-
-        if (datiInsegnamenti != null) {
-            for (String riga : datiInsegnamenti) {
-                modelloLista.addElement(riga);
-            }
-        }
+        modelloLista.addAll(controller.getInsegnamenti(login));
     }
 }

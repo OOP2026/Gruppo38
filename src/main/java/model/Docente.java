@@ -1,15 +1,17 @@
 package model;
 
+import exceptions.CampoVuotoException;
+
 import java.time.LocalTime;
-import java.util.List;
 import java.util.ArrayList;
 
 public class Docente extends Utente {
     private Boolean isResponsabile;
-    private List<Insegnamento> materie;
-    private List<Vincolo> vincoli;
-    private List<Lezione> lezioni;
-    private List<RichiestaSpostamento> richieste;
+    private ArrayList<Insegnamento> materie;
+    private ArrayList<Vincolo> vincoli;
+    private ArrayList<Lezione> lezioni;
+    private ArrayList<RichiestaSpostamento> richieste;
+
     //private List<Aula> aule;//
 
     public Docente(String login, String password, String nome,
@@ -70,19 +72,27 @@ public class Docente extends Utente {
         isResponsabile = responsabile;
     }
 
-    public List<Insegnamento> getMaterie() {
+    public ArrayList<Insegnamento> getMaterie() {
         return materie;
     }
 
-    public void setMaterie(List<Insegnamento> materie) {
-        this.materie = materie;
+    public void aggiungiMateria (String nome, String cfuStr, String annoCorsoStr) throws CampoVuotoException, NumberFormatException {
+
+        if (nome.isBlank() || cfuStr.isBlank() || annoCorsoStr.equals("-SELECT-")) {
+            throw new CampoVuotoException("Bisogna riempire tutti i campi!");
+        }
+
+        int cfu = Integer.parseInt(cfuStr.trim());
+
+        AnnoAccademico annoCorso =  AnnoAccademico.valueOf(annoCorsoStr);
+        materie.add(new Insegnamento(nome, cfu, annoCorso));
     }
 
-    public List<Vincolo> getVincoli() {
+    public ArrayList<Vincolo> getVincoli() {
         return vincoli;
     }
 
-    public void setVincoli(List<Vincolo> vincoli) {
+    public void setVincoli(ArrayList<Vincolo> vincoli) {
         this.vincoli = vincoli;
     }
 
