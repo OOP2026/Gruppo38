@@ -2,9 +2,13 @@ package gui;
 
 import controller.Controller;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProfiloDocente {
@@ -28,6 +32,7 @@ public class ProfiloDocente {
     private JLabel getEmailLabel;
     private JLabel getResponsabileLabel;
     private JButton logOutButton;
+    private BufferedImage logo;
 
     public ProfiloDocente (JFrame mainFrame, Controller controller, String login) {
         profileFrame = new JFrame("Profilo Docente");
@@ -40,6 +45,13 @@ public class ProfiloDocente {
         getCognomeLabel.setText(docente.get(1));
         getEmailLabel.setText(docente.get(2));
         getResponsabileLabel.setText(docente.get(3));
+
+        try {
+            logo = ImageIO.read(new File("src/main/java/gui/image/fed2.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        logoLabel.setIcon(new ImageIcon(logo));
 
         if (!Boolean.parseBoolean(controller.getAttributiDocente(login).get(3))) {
             modificaOrarioButton.setToolTipText("Non sei Responsabile!");

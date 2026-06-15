@@ -5,10 +5,14 @@ import exceptions.CampoVuotoException;
 import exceptions.MissingStudentException;
 import exceptions.MissingTeacherException;
 
+import javax.imageio.ImageIO;
 import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Home {
     private JPanel leftPanel;
@@ -30,6 +34,7 @@ public class Home {
     private JButton registrazioneDocenteButton;
     private static JFrame mainFrame;
     private static Controller controller;
+    private BufferedImage logo;
 
     public static void main(String[] args) {
         controller = new Controller();
@@ -41,6 +46,14 @@ public class Home {
     }
 
     public Home() {
+
+        try {
+            logo = ImageIO.read(new File("src/main/java/gui/image/fed2.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        logoLabel.setIcon(new ImageIcon(logo));
+
         registrazioneStudenteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,7 +70,7 @@ public class Home {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String login = usernameField.getText();
-                String password = passwordField.getText();
+                String password = String.valueOf(passwordField.getPassword());
 
                 try {
                     if(controller.loginStudente(login,password))
@@ -72,7 +85,7 @@ public class Home {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String login = usernameField.getText();
-                String password = passwordField.getText();
+                String password = String.valueOf(passwordField.getPassword());
 
                 try {
                     if(controller.loginDocente(login,password))

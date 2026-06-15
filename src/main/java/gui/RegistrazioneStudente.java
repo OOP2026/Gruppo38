@@ -3,11 +3,15 @@ package gui;
 import controller.Controller;
 import exceptions.CampoVuotoException;
 
+import javax.imageio.ImageIO;
 import javax.naming.AuthenticationException;
 import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class RegistrazioneStudente {
     private JPanel mainPanel;
@@ -34,6 +38,7 @@ public class RegistrazioneStudente {
     private JLabel passwordLabel;
     private ButtonGroup annoGroup;
     private JFrame frame;
+    private BufferedImage logo;
 
     public RegistrazioneStudente(JFrame mainFrame, Controller controller) {
         frame = new JFrame("Registrazione Studente");
@@ -42,6 +47,13 @@ public class RegistrazioneStudente {
         frame.pack();
         mainFrame.setVisible(false);
         frame.setVisible(true);
+
+        try {
+            logo = ImageIO.read(new File("src/main/java/gui/image/fed2.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        logoLabel.setIcon(new ImageIcon(logo));
 
         annullaButton.addActionListener(new ActionListener() {
             @Override
