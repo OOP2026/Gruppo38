@@ -76,7 +76,7 @@ public class Docente extends Utente {
         return materie;
     }
 
-    public void aggiungiMateria (String nome, String cfuStr, String annoCorsoStr) throws CampoVuotoException, NumberFormatException {
+    public void aggiungiInsegnamento (String nome, String cfuStr, String annoCorsoStr) throws CampoVuotoException, NumberFormatException {
 
         if (nome.isBlank() || cfuStr.isBlank() || annoCorsoStr.equals("-SELECT-")) {
             throw new CampoVuotoException("Bisogna riempire tutti i campi!");
@@ -86,6 +86,10 @@ public class Docente extends Utente {
 
         AnnoAccademico annoCorso =  AnnoAccademico.valueOf(annoCorsoStr);
         materie.add(new Insegnamento(nome, cfu, annoCorso));
+    }
+
+    public void removeInsegnamento(int selectedIndex) {
+        materie.remove(selectedIndex);
     }
 
     public ArrayList<Vincolo> getVincoli() {

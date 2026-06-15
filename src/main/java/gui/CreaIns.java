@@ -20,7 +20,7 @@ public class CreaIns {
     private JLabel cfuLabel;
     private JLabel annoLabel;
     private JPanel fieldPanel;
-    private JPanel upperLabel;
+    private JPanel upperPanel;
     private JFrame frame;
 
     public CreaIns(JFrame insegnamentoFrame, Controller controller, String login) {

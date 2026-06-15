@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.CreaIns">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.ModificaInsegnamento">
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="381ad" binding="upperPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="2edce" binding="upperPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -16,7 +16,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="1cada" binding="textPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="67da6" binding="textPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -24,7 +24,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="7b5c7" class="javax.swing.JLabel" binding="nomeLabel">
+              <component id="c245e" class="javax.swing.JLabel" binding="nomeLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -32,7 +32,7 @@
                   <text value="Nome:"/>
                 </properties>
               </component>
-              <component id="4f566" class="javax.swing.JLabel" binding="cfuLabel">
+              <component id="531b2" class="javax.swing.JLabel" binding="cfuLabel">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -40,7 +40,7 @@
                   <text value="CFU:"/>
                 </properties>
               </component>
-              <component id="67908" class="javax.swing.JLabel" binding="annoLabel">
+              <component id="eb350" class="javax.swing.JLabel" binding="annoLabel">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -50,7 +50,7 @@
               </component>
             </children>
           </grid>
-          <grid id="c7049" binding="fieldPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="9bd53" binding="fieldPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -58,17 +58,15 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="1a85" class="javax.swing.JTextField" binding="nomeField">
+              <component id="47d13" class="javax.swing.JTextField" binding="nomeField">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
-                <properties>
-                  <toolTipText value=""/>
-                </properties>
+                <properties/>
               </component>
-              <component id="ea267" class="javax.swing.JTextField" binding="cfuField">
+              <component id="20ca8" class="javax.swing.JTextField" binding="cfuField">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -76,19 +74,17 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="725f8" class="javax.swing.JComboBox" binding="annoComboBox">
+              <component id="e5a29" class="javax.swing.JComboBox" binding="annoComboBox">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties>
-                  <toolTipText value=""/>
-                </properties>
+                <properties/>
               </component>
             </children>
           </grid>
         </children>
       </grid>
-      <grid id="77dba" binding="buttonPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="6f1f1" binding="buttonPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -96,7 +92,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="d5032" class="javax.swing.JButton" binding="annullaButton" default-binding="true">
+          <component id="807f" class="javax.swing.JButton" binding="annullaButton" default-binding="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -104,12 +100,12 @@
               <text value="Annulla"/>
             </properties>
           </component>
-          <component id="b8a0" class="javax.swing.JButton" binding="creaInsegnamentoButton" default-binding="true">
+          <component id="40f46" class="javax.swing.JButton" binding="modificaInsegnamentoButton" default-binding="true">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Crea Insegnamento"/>
+              <text value="Modifica Insegnamento"/>
             </properties>
           </component>
         </children>

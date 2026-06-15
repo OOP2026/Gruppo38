@@ -25,7 +25,7 @@ public class Controller {
 			}
 		}
 
-		if(password.equals(nome) || password.length() < 8){
+		if(password.equals(login) || password.length() < 8){
 			throw new AuthenticationException("Password corta");
 		}
 
@@ -49,7 +49,7 @@ public class Controller {
 			}
 		}
 
-		if(password.equals(nome) || password.length() < 8){
+		if(password.equals(login) || password.length() < 8){
 			throw new AuthenticationException("Password corta");
 		}
 
@@ -157,10 +157,19 @@ public class Controller {
 	public void addInsegnamento (String login, String nome, String cfuStr, String annoCorsoStr) throws CampoVuotoException, NumberFormatException, MissingTeacherException {
 		for(Docente docente : docenti){
 			if(docente.getLogin().equals(login)){
-				docente.aggiungiMateria(nome, cfuStr, annoCorsoStr);
+				docente.aggiungiInsegnamento(nome, cfuStr, annoCorsoStr);
 				return;
 			}
 		}
 		throw new MissingTeacherException("Il docente " + login + " non esiste.");
+	}
+
+	public void removeInsegnamento (String login, int selectedIndex) throws MissingTeacherException {
+		for (Docente docente : docenti) {
+			if (docente.getLogin().equals(login)) {
+				docente.removeInsegnamento(selectedIndex);
+				return;
+			}
+		}
 	}
 }
