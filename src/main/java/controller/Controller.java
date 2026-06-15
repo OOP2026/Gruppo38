@@ -8,6 +8,7 @@ import model.*;
 import javax.naming.AuthenticationException;
 import javax.security.auth.login.LoginException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Controller {
@@ -184,7 +185,7 @@ public class Controller {
 				return datiInsegnamento;
 			}
 		}
-		return null;
+		return Collections.emptyList();
 	}
 
 	public void modificaInsegnamento (String login, int selectedIndex, String nome, String cfuStr, String annoCorsoStr) throws MissingTeacherException {
@@ -195,5 +196,19 @@ public class Controller {
 				docente.getMaterie().get(selectedIndex).setAnno(AnnoAccademico.valueOf(annoCorsoStr));
 			}
 		}
+	}
+
+	public List<String> getInsegnamentiResponsabile (String login)  throws MissingTeacherException {
+		for(Docente docente : docenti){
+			if (docente.getLogin().equals(login)) {
+				ArrayList<String> elencoCompleto = new ArrayList<>();
+				for(Insegnamento ins : docente.getMaterie()){
+					elencoCompleto.add(ins.getNome() + " - " + ins.getCfu() + " CFU- " + ins.getAnno().name() + " ANNO");
+					System.out.println(docente.getMaterie());
+				}
+				return elencoCompleto;
+			}
+		}
+		throw new MissingTeacherException("Il docente " + login + " non esiste.");
 	}
 }

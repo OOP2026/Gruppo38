@@ -35,11 +35,11 @@ public class ModificaInsegnamento {
         DefaultComboBoxModel<String> annoModel = new DefaultComboBoxModel<>(anno);
         annoComboBox.setModel(annoModel);
 
-        List<String> Insegnamenti = controller.getDatiInsegnamento(login, selectedIndex);
+        List<String> insegnamenti = controller.getDatiInsegnamento(login, selectedIndex);
 
-        nomeField.setText(Insegnamenti.get(0));
-        cfuField.setText(Insegnamenti.get(1));
-        switch (Insegnamenti.get(2)) {
+        nomeField.setText(insegnamenti.get(0));
+        cfuField.setText(insegnamenti.get(1));
+        switch (insegnamenti.get(2)) {
             case "PRIMO":
                 annoComboBox.setSelectedIndex(1);
                 break;

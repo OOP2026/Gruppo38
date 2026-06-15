@@ -49,8 +49,6 @@ public class Insegnamenti {
 
         aggiornaListaDati(controller);
 
-
-
         creaNuovoInsegnamentoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
