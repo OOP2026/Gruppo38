@@ -8,6 +8,7 @@ import model.*;
 import javax.naming.AuthenticationException;
 import javax.security.auth.login.LoginException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 	ArrayList<Studente> studenti = new ArrayList<>();
@@ -101,7 +102,7 @@ public class Controller {
 		throw new LoginException("Password non corretta");
 	}
 
-	public ArrayList<String> getAttributiStudente(String login) throws MissingStudentException {
+	public List<String> getAttributiStudente(String login) throws MissingStudentException {
 		boolean studenteTrovato = false;
 		int i = 0;
 		while(!studenteTrovato && i < studenti.size()){
@@ -122,7 +123,7 @@ public class Controller {
 		throw new MissingStudentException("Lo studente " + login + " non esiste.");
 	}
 
-	public ArrayList<String> getAttributiDocente(String login) throws MissingTeacherException {
+	public List<String> getAttributiDocente(String login) throws MissingTeacherException {
 		boolean docenteTrovato = false;
 		int i = 0;
 		while(!docenteTrovato && i < docenti.size()){
@@ -142,7 +143,7 @@ public class Controller {
 		throw new MissingTeacherException("Il docente " + login + " non esiste.");
 	}
 
-	public ArrayList<String> getInsegnamenti (String login) throws MissingTeacherException {
+	public List<String> getInsegnamenti (String login) throws MissingTeacherException {
 		for(Docente docente : docenti){
 			if(docente.getLogin().equals(login)){
 				ArrayList<String> insegnamenti = new ArrayList<>();
@@ -169,6 +170,29 @@ public class Controller {
 			if (docente.getLogin().equals(login)) {
 				docente.removeInsegnamento(selectedIndex);
 				return;
+			}
+		}
+	}
+
+	public List<String> getDatiInsegnamento (String login, int selectedIndex) throws MissingTeacherException {
+		List<String> datiInsegnamento = new ArrayList<>();
+		for (Docente docente : docenti) {
+			if (docente.getLogin().equals(login)) {
+				datiInsegnamento.add(docente.getMaterie().get(selectedIndex).getNome());
+				datiInsegnamento.add(String.valueOf(docente.getMaterie().get(selectedIndex).getCfu()));
+				datiInsegnamento.add(String.valueOf(docente.getMaterie().get(selectedIndex).getAnno()));
+				return datiInsegnamento;
+			}
+		}
+		return null;
+	}
+
+	public void modificaInsegnamento (String login, int selectedIndex, String nome, String cfuStr, String annoCorsoStr) throws MissingTeacherException {
+		for (Docente docente : docenti) {
+			if (docente.getLogin().equals(login)) {
+				docente.getMaterie().get(selectedIndex).setNome(nome);
+				docente.getMaterie().get(selectedIndex).setCfu(Integer.parseInt(cfuStr));
+				docente.getMaterie().get(selectedIndex).setAnno(AnnoAccademico.valueOf(annoCorsoStr));
 			}
 		}
 	}

@@ -94,6 +94,7 @@ public class Insegnamenti {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedIndex = insegnamentiList.getSelectedIndex();
+                new ModificaInsegnamento(insegnamentoFrame, controller, login, selectedIndex);
             }
         });
     }

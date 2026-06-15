@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class ProfiloDocente {
     private JFrame profileFrame;
@@ -39,7 +39,7 @@ public class ProfiloDocente {
         profileFrame.setContentPane(mainPanel);
         profileFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(false);
-        ArrayList<String> docente = controller.getAttributiDocente(login);
+        List<String> docente = controller.getAttributiDocente(login);
 
         getNomeLabel.setText(docente.get(0));
         getCognomeLabel.setText(docente.get(1));
