@@ -28,6 +28,7 @@ public class Ricerca {
         frame.pack();
         profileFrame.setVisible(false);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
 
         logOutButton.addActionListener(new ActionListener() {
             @Override

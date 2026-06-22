@@ -43,6 +43,7 @@ public class Home {
         mainFrame.setContentPane(new Home().mainPanel);
         mainFrame.pack();
         mainFrame.setVisible(true);
+        mainFrame.setLocationRelativeTo(null);
     }
 
     public Home() {

@@ -29,6 +29,7 @@ public class CreaIns {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
 
         String[] anno = {"-SELECT-", "PRIMO", "SECONDO", "TERZO"};
         annoComboBox.setModel(new DefaultComboBoxModel<>(anno));

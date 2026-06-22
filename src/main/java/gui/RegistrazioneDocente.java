@@ -44,6 +44,7 @@ public class RegistrazioneDocente {
         frame.pack();
         mainFrame.setVisible(false);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
 
         try {
             logo = ImageIO.read(new File("src/main/java/gui/image/fed2.png"));

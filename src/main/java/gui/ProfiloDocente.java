@@ -39,6 +39,7 @@ public class ProfiloDocente {
         profileFrame.setContentPane(mainPanel);
         profileFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(false);
+        profileFrame.setLocationRelativeTo(null);
         List<String> docente = controller.getAttributiDocente(login);
 
         getNomeLabel.setText(docente.get(0));

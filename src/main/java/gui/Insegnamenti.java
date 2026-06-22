@@ -36,6 +36,7 @@ public class Insegnamenti {
         this.login = login;
         insegnamentoFrame.setVisible(true);
         insegnamentoPanel.setVisible(false);
+        insegnamentoFrame.setLocationRelativeTo(null);
 
         modelloLista = new DefaultListModel<>();
         insegnamentiList.setModel(modelloLista);

@@ -40,6 +40,7 @@ public class ProfiloStudente {
         profileFrame.setContentPane(mainPanel);
         profileFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(false);
+        profileFrame.setLocationRelativeTo(null);
         List<String> studente = controller.getAttributiStudente(login);
 
         getNomeLabel.setText(studente.get(0));

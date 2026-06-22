@@ -30,6 +30,7 @@ public class ModificaInsegnamento {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
         insegnamentoFrame.setVisible(false);
         String[] anno = {"-SELECT-", "PRIMO", "SECONDO", "TERZO"};
         DefaultComboBoxModel<String> annoModel = new DefaultComboBoxModel<>(anno);
