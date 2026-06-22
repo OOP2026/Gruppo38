@@ -197,4 +197,17 @@ public class Controller {
 			}
 		}
 	}
+
+	public List<String> getTuttiInsegnamentiConDocente() {
+		List<String> listaFormattata = new ArrayList<>();
+		for (Docente docente : docenti) {
+			if (docente.getMaterie() != null) {
+				for (Insegnamento ins : docente.getMaterie()) {
+					String voce = ins.getNome() + " (" + docente.getNome() + " " + docente.getCognome() + ")";
+					listaFormattata.add(voce);
+				}
+			}
+		}
+		return listaFormattata;
+	}
 }

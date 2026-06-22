@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ModificaOrario {
     private JPanel mainPanel;
@@ -23,7 +24,6 @@ public class ModificaOrario {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         profileFrame.setVisible(false);
         this.login = login;
-        frame.setLocationRelativeTo(null);
 
         String[] giorni = {"Orario", "Lunedì", "Marted'","Mercoledì","Giovedì","Venerdì"};
 
@@ -46,8 +46,22 @@ public class ModificaOrario {
         orariTable.getTableHeader().setResizingAllowed(false);
         orariTable.getTableHeader().setReorderingAllowed(false);
 
+        JComboBox<String> comboInsegnamenti = new JComboBox<>();
+        comboInsegnamenti.addItem("");
+
+        List<String> listaInsegnamenti = controller.getTuttiInsegnamentiConDocente();
+        for (String voce : listaInsegnamenti) {
+            comboInsegnamenti.addItem(voce);
+        }
+
+        for (int i = 1; i < orariTable.getColumnCount(); i++) {
+            orariTable.getColumnModel().getColumn(i).setCellEditor(new DefaultCellEditor(comboInsegnamenti));
+        }
+
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+
         tornaIndietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
