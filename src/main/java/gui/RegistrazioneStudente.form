@@ -180,7 +180,6 @@
               <enabled value="true"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
-              <icon value="gui/image/fed2.png"/>
               <text value=""/>
             </properties>
           </component>
