@@ -231,6 +231,11 @@ public class Controller {
 	}
 
 	public List<String> getAule() {
+		List<String> nomiAule = new ArrayList<>();
 
+		for (Aula aula : aule) {
+			nomiAule.add(aula.getNome());
+		}
+		return nomiAule;
 	}
 }
