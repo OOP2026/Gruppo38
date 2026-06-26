@@ -26,9 +26,9 @@ public class Home {
     private JLabel logoLabel;
     private JPanel logoPanel;
     private JPanel placeholderPanel;
-    private JLabel text1;
-    private JLabel text2;
-    private JLabel text3;
+    private JLabel benvenutiText;
+    private JLabel gruppo38Text;
+    private JLabel progettoText;
     private JButton loginStudenteButton;
     private JButton loginDocenteButton;
     private JButton registrazioneDocenteButton;

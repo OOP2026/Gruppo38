@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Ricerca {
+public class FiltroRicerca {
     private JPanel mainPanel;
     private JButton docentiButton;
     private JButton insegnamentiButton;
@@ -21,7 +21,7 @@ public class Ricerca {
     private JPanel logOutPanel;
     private JFrame frame;
 
-    public Ricerca(JFrame mainFrame, JFrame profileFrame, Controller controller) {
+    public FiltroRicerca(JFrame mainFrame, JFrame profileFrame, Controller controller) {
         frame = new JFrame("Ricerca");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,6 +43,30 @@ public class Ricerca {
             public void actionPerformed(ActionEvent e) {
                 profileFrame.setVisible(true);
                 frame.dispose();
+            }
+        });
+        docentiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        insegnamentiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        giorniSettimanaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        auleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }

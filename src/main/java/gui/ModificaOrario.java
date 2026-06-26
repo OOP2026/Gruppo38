@@ -13,27 +13,32 @@ public class ModificaOrario {
     private JPanel tabellaOrariPanel;
     private JTable orariTable;
     private JButton tornaIndietroButton;
-    private JPanel burronPanel;
+    private JPanel buttonPanel;
     private JButton saveButton;
     private JFrame frame;
-    private String login;
 
-    public ModificaOrario (JFrame profileFrame, Controller controller, String login) {
+    public ModificaOrario (JFrame profileFrame, Controller controller) {
         frame = new JFrame("Modifica Orario");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         profileFrame.setVisible(false);
-        this.login = login;
 
-        String[] giorni = {"Orario", "Lunedì", "Marted'","Mercoledì","Giovedì","Venerdì"};
+        String[] giorni = {"Orario", "Lunedì", "Martedì","Mercoledì","Giovedì","Venerdì"};
 
-        String[][] orari = {
-                {"08:00 - 09:00", "", "", "", "", ""},
-                {"09:00 - 10:00", "", "", "", "", ""},
-                {"10:00 - 11:00", "", "", "", "", ""},
-                {"11:00 - 12:00", "", "", "", "", ""},
-                {"12:00 - 13:00", "", "", "", "", ""}
-        };
+        String[][] orari;
+        String[][] orarioSalvato = controller.getOrarioGenerale();
+
+        if (orarioSalvato != null) {
+            orari = orarioSalvato;
+        } else {
+            orari = new String[][] {
+                    {"08:00 - 09:00", "", "", "", "", ""},
+                    {"09:00 - 10:00", "", "", "", "", ""},
+                    {"10:00 - 11:00", "", "", "", "", ""},
+                    {"11:00 - 12:00", "", "", "", "", ""},
+                    {"12:00 - 13:00", "", "", "", "", ""}
+            };
+        }
 
         DefaultTableModel modello = new DefaultTableModel(orari, giorni) {
             @Override

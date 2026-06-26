@@ -65,7 +65,7 @@ public class ProfiloDocente {
         modificaOrarioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new  ModificaOrario(profileFrame, controller, login);
+                new  ModificaOrario(profileFrame, controller);
             }
         });
         insegnamentiButton.addActionListener(new ActionListener() {
@@ -77,7 +77,7 @@ public class ProfiloDocente {
         ricercaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Ricerca(mainFrame, profileFrame,controller);
+                new FiltroRicerca(mainFrame, profileFrame,controller);
             }
         });
         logOutButton.addActionListener(new ActionListener() {

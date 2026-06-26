@@ -62,7 +62,7 @@ public class ProfiloStudente {
         ricercaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Ricerca(mainFrame, profileFrame,controller);
+                new FiltroRicerca(mainFrame, profileFrame,controller);
                 profileFrame.setVisible(false);
             }
         });
