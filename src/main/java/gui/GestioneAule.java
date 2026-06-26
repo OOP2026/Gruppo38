@@ -87,7 +87,7 @@ public class GestioneAule {
     private void aggiornaListaDati(Controller controller) {
         modelloLista.clear();
 
-        //modelloLista.addAll(controller.getAule());
+        modelloLista.addAll(controller.getAule());
 
         if (!modelloLista.isEmpty()) {
             aulaPanel.setVisible(true);

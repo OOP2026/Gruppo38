@@ -203,16 +203,15 @@ public class Controller {
 	}
 
 	public List<String> getTuttiInsegnamentiConDocente() {
-		List<String> listaFormattata = new ArrayList<>();
+		List<String> insegnamenti = new ArrayList<>();
 		for (Docente docente : docenti) {
 			if (docente.getMaterie() != null) {
 				for (Insegnamento ins : docente.getMaterie()) {
-					String voce = ins.getNome() + " (" + docente.getNome() + " " + docente.getCognome() + ")";
-					listaFormattata.add(voce);
+					insegnamenti.add(ins.getNome() + " (" + docente.getNome() + " " + docente.getCognome() + ")");
 				}
 			}
 		}
-		return listaFormattata;
+		return insegnamenti;
 	}
 
 	public void salvaOrarioGenerale(String[][] nuovoOrario) {
@@ -244,12 +243,11 @@ public class Controller {
 	}
 
 	public List<String> getAule() {
-		List<String> nomiAule = new ArrayList<>();
+		List<String> auleList = new ArrayList<>();
 
 		for (Aula aula : aule) {
-			nomiAule.add(aula.getNome());
+			auleList.add("Aula: " + aula.getNome() + " || Capienza: " + aula.getCapienza() + " posti");
 		}
-
-		return nomiAule;
+		return auleList;
 	}
 }
