@@ -60,16 +60,16 @@ public class Insegnamenti {
         profiloButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                insegnamentoFrame.dispose();
                 profileFrame.setVisible(true);
+                insegnamentoFrame.dispose();
             }
         });
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                mainFrame.setVisible(true);
                 profileFrame.dispose();
                 insegnamentoFrame.dispose();
-                mainFrame.setVisible(true);
             }
         });
         insegnamentiList.addListSelectionListener(new ListSelectionListener() {

@@ -4,6 +4,7 @@ import controller.Controller;
 import exceptions.CampoVuotoException;
 
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,13 +15,13 @@ public class CreaIns {
     private JButton annullaButton;
     private JButton creaInsegnamentoButton;
     private JPanel buttonPanel;
-    private JComboBox annoComboBox;
+    private JComboBox<String> annoComboBox;
     private JLabel nomeLabel;
     private JLabel cfuLabel;
     private JLabel annoLabel;
     private JPanel fieldPanel;
     private JPanel upperPanel;
-    private JSpinner cfuSpinner;
+    private JTextField cfuField;
     private JFrame frame;
 
     public CreaIns(JFrame insegnamentoFrame, Controller controller, String login) {
@@ -33,9 +34,6 @@ public class CreaIns {
 
         String[] anno = {"-SELECT-", "PRIMO", "SECONDO", "TERZO"};
         annoComboBox.setModel(new DefaultComboBoxModel<>(anno));
-
-        SpinnerModel spinnerModel = new SpinnerNumberModel(1, 0, 30, 1);
-        cfuSpinner.setModel(spinnerModel);
 
         annullaButton.addActionListener(new ActionListener() {
             @Override
@@ -50,7 +48,7 @@ public class CreaIns {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String nome = nomeField.getText();
-                    String cfuStr = cfuSpinner.getValue().toString();
+                    String cfuStr = cfuField.getText();
                     String annoCorsoStr = annoComboBox.getSelectedItem().toString();
 
                     controller.addInsegnamento(login, nome, cfuStr, annoCorsoStr);

@@ -32,6 +32,7 @@ public class ProfiloDocente {
     private JLabel getEmailLabel;
     private JLabel getResponsabileLabel;
     private JButton logOutButton;
+    private JButton gestioneAuleButton;
     private BufferedImage logo;
 
     public ProfiloDocente (JFrame mainFrame, Controller controller, String login) {
@@ -55,7 +56,9 @@ public class ProfiloDocente {
 
         if (!Boolean.parseBoolean(controller.getAttributiDocente(login).get(3))) {
             modificaOrarioButton.setToolTipText("Non sei Responsabile!");
+            gestioneAuleButton.setToolTipText("Non sei Responsabile!");
             modificaOrarioButton.setEnabled(false);
+            gestioneAuleButton.setEnabled(false);
         }
 
         profileFrame.pack();
@@ -85,6 +88,12 @@ public class ProfiloDocente {
             public void actionPerformed(ActionEvent e) {
                 profileFrame.dispose();
                 mainFrame.setVisible(true);
+            }
+        });
+        gestioneAuleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GestioneAule(mainFrame, profileFrame, controller, login);
             }
         });
     }

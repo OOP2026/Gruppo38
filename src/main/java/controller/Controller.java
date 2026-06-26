@@ -14,6 +14,7 @@ import java.util.List;
 public class Controller {
 	ArrayList<Studente> studenti = new ArrayList<>();
 	ArrayList<Docente> docenti = new ArrayList<>();
+	ArrayList<Aula> aule = new ArrayList<>();
 
 	private String[][] orarioGenerale = null;
 
@@ -219,5 +220,17 @@ public class Controller {
 
 	public String[][] getOrarioGenerale() {
 		return this.orarioGenerale;
+	}
+
+	public void aggiungiAula(String nome, String capienzaStr) {
+
+	}
+
+	public void removeAula(String login, int selectedIndex) {
+
+	}
+
+	public List<String> getAule() {
+
 	}
 }

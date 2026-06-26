@@ -17,11 +17,11 @@ public class ModificaInsegnamento {
     private JPanel textPanel;
     private JPanel fieldPanel;
     private JTextField nomeField;
-    private JComboBox annoComboBox;
+    private JComboBox<String> annoComboBox;
     private JLabel nomeLabel;
     private JLabel cfuLabel;
     private JLabel annoLabel;
-    private JSpinner cfuSpinner;
+    private JTextField cfuField;
     private JFrame frame;
 
     public ModificaInsegnamento(JFrame insegnamentoFrame, Controller controller, String login, int selectedIndex) {
@@ -35,13 +35,12 @@ public class ModificaInsegnamento {
         String[] anno = {"-SELECT-", "PRIMO", "SECONDO", "TERZO"};
         DefaultComboBoxModel<String> annoModel = new DefaultComboBoxModel<>(anno);
         annoComboBox.setModel(annoModel);
-        SpinnerModel spinnerModel = new SpinnerNumberModel(1, 0, 30, 1);
-        cfuSpinner.setModel(spinnerModel);
+
 
         List<String> insegnamenti = controller.getDatiInsegnamento(login, selectedIndex);
 
         nomeField.setText(insegnamenti.get(0));
-        cfuSpinner.setValue(insegnamenti.get(1));
+        cfuField.setText(insegnamenti.get(1));
         switch (insegnamenti.get(2)) {
             case "PRIMO":
                 annoComboBox.setSelectedIndex(1);
@@ -63,7 +62,7 @@ public class ModificaInsegnamento {
         modificaInsegnamentoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.modificaInsegnamento(login, selectedIndex, nomeField.getText(), cfuSpinner.getValue().toString(), annoComboBox.getSelectedItem().toString());
+                controller.modificaInsegnamento(login, selectedIndex, nomeField.getText(), cfuField.getText(), annoComboBox.getSelectedItem().toString());
                 insegnamentoFrame.setVisible(true);
                 frame.dispose();
             }
