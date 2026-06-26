@@ -2,6 +2,7 @@ package gui;
 
 import controller.Controller;
 import exceptions.CampoVuotoException;
+import exceptions.CreaException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -42,7 +43,7 @@ public class CreaAula {
                     controller.aggiungiAula(nome, capienzaStr);
                     gestioneFrame.setVisible(true);
                     frame.dispose();
-                } catch (CampoVuotoException ex) {
+                } catch (CampoVuotoException | CreaException ex) {
                     JOptionPane.showMessageDialog(frame,"Errore creazione: " + ex.getMessage());
                 }
             }

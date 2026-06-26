@@ -1,6 +1,7 @@
 package controller;
 
 import exceptions.CampoVuotoException;
+import exceptions.CreaException;
 import exceptions.MissingStudentException;
 import exceptions.MissingTeacherException;
 import model.*;
@@ -222,8 +223,20 @@ public class Controller {
 		return this.orarioGenerale;
 	}
 
-	public void aggiungiAula(String nome, String capienzaStr) {
+	public void aggiungiAula(String nome, String capienzaStr) throws CampoVuotoException, CreaException {
+		if (nome.isBlank() || capienzaStr.isBlank()) {
+			throw new CampoVuotoException("Bisogna riempire tutti i campi!");
+		}
 
+		for (Aula aula : aule) {
+			if (aula.getNome().trim().equalsIgnoreCase(nome.trim())) {
+				throw new CreaException("L'aula '" + nome + "' è già nel sistema!");
+			}
+		}
+
+		int capienza = Integer.parseInt(capienzaStr.trim());
+
+		aule.add(new Aula(nome, capienza));
 	}
 
 	public void removeAula(String login, int selectedIndex) {
@@ -236,6 +249,7 @@ public class Controller {
 		for (Aula aula : aule) {
 			nomiAule.add(aula.getNome());
 		}
+
 		return nomiAule;
 	}
 }
