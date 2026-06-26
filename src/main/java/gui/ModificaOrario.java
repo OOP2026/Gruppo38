@@ -14,7 +14,7 @@ public class ModificaOrario {
     private JTable orariTable;
     private JButton tornaIndietroButton;
     private JPanel burronPanel;
-    private DefaultListModel<String> modelloLista;
+    private JButton saveButton;
     private JFrame frame;
     private String login;
 
@@ -65,6 +65,30 @@ public class ModificaOrario {
         tornaIndietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                profileFrame.setVisible(true);
+                frame.dispose();
+            }
+        });
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int righe = orariTable.getRowCount();
+                int colonne = orariTable.getColumnCount();
+                String[][] datiDaSalvare = new String[righe][colonne];
+
+                for (int r = 0; r < righe; r++) {
+                    for (int c = 0; c < colonne; c++) {
+                        Object valore = orariTable.getValueAt(r, c);
+                        if(valore != null){
+                            datiDaSalvare[r][c] = valore.toString();
+                        } else {
+                            datiDaSalvare[r][c] = "";
+                        }
+                    }
+                }
+                controller.salvaOrarioGenerale(datiDaSalvare);
+
+                JOptionPane.showMessageDialog(frame, "Orario salvato correttamente!");
                 profileFrame.setVisible(true);
                 frame.dispose();
             }

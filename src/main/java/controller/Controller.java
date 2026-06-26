@@ -15,6 +15,8 @@ public class Controller {
 	ArrayList<Studente> studenti = new ArrayList<>();
 	ArrayList<Docente> docenti = new ArrayList<>();
 
+	private String[][] orarioGenerale = null;
+
 	public void registrazioneDocente (String login, String password, String nome, String cognome, String email, String isResponsabile) throws LoginException, AuthenticationException, CampoVuotoException {
 
 		if(login.isBlank() || nome.isBlank() || cognome.isBlank() || email.isBlank() || password.isBlank() || isResponsabile.isBlank()) {
@@ -209,5 +211,13 @@ public class Controller {
 			}
 		}
 		return listaFormattata;
+	}
+
+	public void salvaOrarioGenerale(String[][] nuovoOrario) {
+		this.orarioGenerale = nuovoOrario;
+	}
+
+	public String[][] getOrarioGenerale() {
+		return this.orarioGenerale;
 	}
 }

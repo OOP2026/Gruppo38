@@ -11,7 +11,6 @@ public class CreaIns {
     private JPanel mainPanel;
     private JPanel textPanel;
     private JTextField nomeField;
-    private JTextField cfuField;
     private JButton annullaButton;
     private JButton creaInsegnamentoButton;
     private JPanel buttonPanel;
@@ -21,6 +20,7 @@ public class CreaIns {
     private JLabel annoLabel;
     private JPanel fieldPanel;
     private JPanel upperPanel;
+    private JSpinner cfuSpinner;
     private JFrame frame;
 
     public CreaIns(JFrame insegnamentoFrame, Controller controller, String login) {
@@ -33,6 +33,9 @@ public class CreaIns {
 
         String[] anno = {"-SELECT-", "PRIMO", "SECONDO", "TERZO"};
         annoComboBox.setModel(new DefaultComboBoxModel<>(anno));
+
+        SpinnerModel spinnerModel = new SpinnerNumberModel(1, 0, 30, 1);
+        cfuSpinner.setModel(spinnerModel);
 
         annullaButton.addActionListener(new ActionListener() {
             @Override
@@ -47,7 +50,7 @@ public class CreaIns {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String nome = nomeField.getText();
-                    String cfuStr = cfuField.getText();
+                    String cfuStr = cfuSpinner.getValue().toString();
                     String annoCorsoStr = annoComboBox.getSelectedItem().toString();
 
                     controller.addInsegnamento(login, nome, cfuStr, annoCorsoStr);
