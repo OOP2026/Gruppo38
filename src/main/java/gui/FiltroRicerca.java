@@ -10,7 +10,7 @@ public class FiltroRicerca {
     private JPanel mainPanel;
     private JButton docentiButton;
     private JButton insegnamentiButton;
-    private JButton giorniSettimanaButton;
+    private JButton annoCorsoButton;
     private JButton auleButton;
     private JButton logOutButton;
     private JButton profiloButton;
@@ -19,21 +19,21 @@ public class FiltroRicerca {
     private JPanel leftButtonPanel;
     private JPanel profiloTextPanel;
     private JPanel logOutPanel;
-    private JFrame frame;
+    private JFrame ricercaFrame;
 
     public FiltroRicerca(JFrame mainFrame, JFrame profileFrame, Controller controller) {
-        frame = new JFrame("Ricerca");
-        frame.setContentPane(mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
+        ricercaFrame = new JFrame("Ricerca");
+        ricercaFrame.setContentPane(mainPanel);
+        ricercaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ricercaFrame.pack();
         profileFrame.setVisible(false);
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
+        ricercaFrame.setVisible(true);
+        ricercaFrame.setLocationRelativeTo(null);
 
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
+                ricercaFrame.dispose();
                 profileFrame.dispose();
                 mainFrame.setVisible(true);
             }
@@ -42,31 +42,35 @@ public class FiltroRicerca {
             @Override
             public void actionPerformed(ActionEvent e) {
                 profileFrame.setVisible(true);
-                frame.dispose();
+                ricercaFrame.dispose();
             }
         });
         docentiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new RicercaDocente(mainFrame, profileFrame, ricercaFrame, controller);
+                ricercaFrame.dispose();
             }
         });
         insegnamentiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new RicercaInsegnamento(mainFrame, profileFrame, ricercaFrame, controller);
+                ricercaFrame.dispose();
             }
         });
-        giorniSettimanaButton.addActionListener(new ActionListener() {
+        annoCorsoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new RicercaAnno(mainFrame, profileFrame, ricercaFrame, controller);
+                ricercaFrame.dispose();
             }
         });
         auleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new RicercaAula(mainFrame, profileFrame, ricercaFrame, controller);
+                ricercaFrame.dispose();
             }
         });
     }

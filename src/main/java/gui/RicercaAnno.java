@@ -4,12 +4,12 @@ import controller.Controller;
 
 import javax.swing.*;
 
-public class RicercaInsegnamento {
+public class RicercaAnno {
     private JPanel mainPanel;
     private JFrame frame;
 
-    public RicercaInsegnamento(JFrame mainFrame, JFrame profileFrame, JFrame ricercaFrame, Controller controller) {
-        frame = new JFrame("Ricerca Docente");
+    public RicercaAnno(JFrame mainFrame, JFrame profileFrame, JFrame ricercaFrame, Controller controller) {
+        frame = new JFrame("Ricerca Anno");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
