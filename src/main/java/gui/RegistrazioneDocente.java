@@ -41,10 +41,8 @@ public class RegistrazioneDocente {
         frame = new JFrame("Registrazione Docente");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
         mainFrame.setVisible(false);
         frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
 
         try {
             logo = ImageIO.read(new File("src/main/java/gui/image/fed2.png"));
@@ -52,6 +50,9 @@ public class RegistrazioneDocente {
             throw new RuntimeException(e);
         }
         logoLabel.setIcon(new ImageIcon(logo));
+
+        frame.pack();
+        frame.setLocationRelativeTo(null);
 
         annullaButton.addActionListener(new ActionListener() {
             @Override

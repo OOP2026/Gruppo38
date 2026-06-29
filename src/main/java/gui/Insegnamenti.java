@@ -45,6 +45,8 @@ public class Insegnamenti {
             @Override
             public void componentShown(ComponentEvent e) {
                 aggiornaListaDati(controller);
+                insegnamentoFrame.pack();
+                insegnamentoFrame.setLocationRelativeTo(null);
             }
         });
 

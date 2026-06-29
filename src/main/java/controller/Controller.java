@@ -238,8 +238,20 @@ public class Controller {
 		aule.add(new Aula(nome, capienza));
 	}
 
-	public void removeAula(String login, int selectedIndex) {
+	public void removeAula(int selectedIndex) {
+		aule.remove(selectedIndex);
+	}
 
+	public String[] getDatiAule(int selectedIndex) {
+		String[] datiAula = new String[2];
+		datiAula[0] = aule.get(selectedIndex).getNome();
+		datiAula[1] = String.valueOf(aule.get(selectedIndex).getCapienza());
+		return datiAula;
+	}
+
+	public void modificaAule(int selectedIndex, String nome, String capienzaStr){
+		aule.get(selectedIndex).setNome(nome);
+		aule.get(selectedIndex).setCapienza(Integer.parseInt(capienzaStr.trim()));
 	}
 
 	public List<String> getAule() {

@@ -43,6 +43,8 @@ public class GestioneAule {
             @Override
             public void componentShown(ComponentEvent e) {
                 aggiornaListaDati(controller);
+                gestioneFrame.pack();
+                gestioneFrame.setLocationRelativeTo(null);
             }
         });
 
@@ -57,7 +59,8 @@ public class GestioneAule {
         modificaAulaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ModificaAula(gestioneFrame, controller, login);
+                int selectedIndex = auleList.getSelectedIndex();
+                new ModificaAula(gestioneFrame, controller, selectedIndex);
             }
         });
         eliminaAulaButton.addActionListener(new ActionListener() {
@@ -65,7 +68,7 @@ public class GestioneAule {
             public void actionPerformed(ActionEvent e) {
                 int selectedIndex = auleList.getSelectedIndex();
                 if (JOptionPane.showConfirmDialog(null, "Sei sicuro di voler cancellare questo insegnamento?") == JOptionPane.YES_OPTION) {
-                    controller.removeAula(login, selectedIndex);
+                    controller.removeAula(selectedIndex);
                     aggiornaListaDati(controller);
                 }
             }
