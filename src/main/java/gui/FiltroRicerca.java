@@ -49,28 +49,24 @@ public class FiltroRicerca {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new RicercaDocente(mainFrame, profileFrame, ricercaFrame, controller);
-                ricercaFrame.dispose();
             }
         });
         insegnamentiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new RicercaInsegnamento(mainFrame, profileFrame, ricercaFrame, controller);
-                ricercaFrame.dispose();
             }
         });
         annoCorsoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new RicercaAnno(mainFrame, profileFrame, ricercaFrame, controller);
-                ricercaFrame.dispose();
             }
         });
         auleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new RicercaAula(mainFrame, profileFrame, ricercaFrame, controller);
-                ricercaFrame.dispose();
             }
         });
     }
