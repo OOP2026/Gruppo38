@@ -22,7 +22,6 @@ public class Insegnamenti {
     private JButton logOutButton;
     private JButton cancellaInsegnamentoButton;
     private JButton modificaInsegnamentoButton;
-    private JPanel insegnamentoPanel;
     private JFrame insegnamentoFrame;
     private DefaultListModel<String> modelloLista;
     private String login;
@@ -35,7 +34,8 @@ public class Insegnamenti {
         profileFrame.setVisible(false);
         this.login = login;
         insegnamentoFrame.setVisible(true);
-        insegnamentoPanel.setVisible(false);
+        modificaInsegnamentoButton.setVisible(false);
+        cancellaInsegnamentoButton.setVisible(false);
         insegnamentoFrame.setLocationRelativeTo(null);
 
         modelloLista = new DefaultListModel<>();
@@ -106,11 +106,13 @@ public class Insegnamenti {
         modelloLista.addAll(controller.getInsegnamenti(login));
 
         if (!modelloLista.isEmpty()) {
-            insegnamentoPanel.setVisible(true);
+            modificaInsegnamentoButton.setVisible(true);
             modificaInsegnamentoButton.setEnabled(false);
+            cancellaInsegnamentoButton.setVisible(true);
             cancellaInsegnamentoButton.setEnabled(false);
         }  else {
-            insegnamentoPanel.setVisible(false);
+            modificaInsegnamentoButton.setVisible(false);
+            cancellaInsegnamentoButton.setVisible(false);
         }
     }
 }

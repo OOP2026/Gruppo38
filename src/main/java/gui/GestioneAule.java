@@ -20,7 +20,6 @@ public class GestioneAule {
     private JButton profiloButton;
     private JButton eliminaAulaButton;
     private JButton logOutButton;
-    private JPanel aulaPanel;
     private JFrame gestioneFrame;
     private DefaultListModel<String> modelloLista;
     private String login;
@@ -33,7 +32,8 @@ public class GestioneAule {
         this.login = login;
         gestioneFrame.pack();
         gestioneFrame.setVisible(true);
-        aulaPanel.setVisible(false);
+        modificaAulaButton.setVisible(false);
+        eliminaAulaButton.setVisible(false);
         gestioneFrame.setLocationRelativeTo(null);
 
         modelloLista = new DefaultListModel<>();
@@ -102,11 +102,13 @@ public class GestioneAule {
         modelloLista.addAll(controller.getAule());
 
         if (!modelloLista.isEmpty()) {
-            aulaPanel.setVisible(true);
+            modificaAulaButton.setVisible(true);
             modificaAulaButton.setEnabled(false);
+            eliminaAulaButton.setVisible(true);
             eliminaAulaButton.setEnabled(false);
         }  else {
-            aulaPanel.setVisible(false);
+            modificaAulaButton.setVisible(false);
+            eliminaAulaButton.setVisible(false);
         }
     }
 }
