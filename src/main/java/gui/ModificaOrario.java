@@ -4,9 +4,11 @@ import controller.Controller;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ModificaOrario {
     private JPanel mainPanel;
@@ -17,13 +19,13 @@ public class ModificaOrario {
     private JButton saveButton;
     private JFrame frame;
 
-    public ModificaOrario (JFrame profileFrame, Controller controller) {
+    public ModificaOrario(JFrame profileFrame, Controller controller) {
         frame = new JFrame("Modifica Orario");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         profileFrame.setVisible(false);
 
-        String[] giorni = {"Orario", "Lunedì", "Martedì","Mercoledì","Giovedì","Venerdì"};
+        String[] giorni = {"Orario", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì"};
 
         String[][] orari;
         String[][] orarioSalvato = controller.getOrarioGenerale();
@@ -43,7 +45,7 @@ public class ModificaOrario {
         DefaultTableModel modello = new DefaultTableModel(orari, giorni) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return column != 0;
+                return false;
             }
         };
 
@@ -53,15 +55,52 @@ public class ModificaOrario {
 
         JComboBox<String> comboInsegnamenti = new JComboBox<>();
         comboInsegnamenti.addItem("");
-
-        List<String> listaInsegnamenti = controller.getTuttiInsegnamentiConDocente();
-        for (String voce : listaInsegnamenti) {
+        for (String voce : controller.getTuttiInsegnamentiConDocente()) {
             comboInsegnamenti.addItem(voce);
         }
 
-        for (int i = 1; i < orariTable.getColumnCount(); i++) {
-            orariTable.getColumnModel().getColumn(i).setCellEditor(new DefaultCellEditor(comboInsegnamenti));
+        JComboBox<String> comboAule = new JComboBox<>();
+        comboAule.addItem("");
+
+        for (String aula : controller.getNomiAule()) {
+            comboAule.addItem(aula);
         }
+
+        orariTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int riga = orariTable.getSelectedRow();
+                    int colonna = orariTable.getSelectedColumn();
+
+                    if (colonna > 0) {
+                        JPanel pannelloPopup = new JPanel(new GridLayout(0, 1));
+                        pannelloPopup.add(new JLabel("Seleziona Insegnamento:"));
+                        pannelloPopup.add(comboInsegnamenti);
+                        pannelloPopup.add(new JLabel("Seleziona Aula:"));
+                        pannelloPopup.add(comboAule);
+
+                        int result = JOptionPane.showConfirmDialog(frame, pannelloPopup,
+                                "Assegna Lezione", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+                        if (result == JOptionPane.OK_OPTION) {
+                            String insSelezionato = (String) comboInsegnamenti.getSelectedItem();
+                            String aulaSelezionata = (String) comboAule.getSelectedItem();
+
+                            if (insSelezionato != null && !insSelezionato.isEmpty()) {
+                                String testoCella = insSelezionato;
+                                if (aulaSelezionata != null && !aulaSelezionata.trim().isEmpty()) {
+                                    testoCella += " - " + aulaSelezionata;
+                                }
+                                orariTable.setValueAt(testoCella, riga, colonna);
+                            } else {
+                                orariTable.setValueAt("", riga, colonna);
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
         frame.pack();
         frame.setVisible(true);

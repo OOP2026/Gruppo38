@@ -294,6 +294,14 @@ public class Controller {
 		return listaFormattata;
 	}
 
+	public List<String> getNomiAule() {
+		List<String> nomi = new ArrayList<>();
+		for (Aula aula : aule) {
+			nomi.add(aula.getNome());
+		}
+		return nomi;
+	}
+
 	public List<String> getDatiAuleFormattati_Ricerca(String filtro) {
 		List<String> listaFormattata = new ArrayList<>();
 		for (Aula aula : aule) {
