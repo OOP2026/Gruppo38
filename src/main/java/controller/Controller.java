@@ -293,4 +293,26 @@ public class Controller {
 		}
 		return listaFormattata;
 	}
+
+	public List<String> getDatiAuleFormattati_Ricerca(String aulaCercata) {
+		List<String> listaFormattata = new ArrayList<>();
+		for (Aula aula : aule) {
+			if (aulaCercata != null && !aulaCercata.equals("-SELECT-")) {
+				if (aula.getNome().equalsIgnoreCase(aulaCercata)) {
+					listaFormattata.add("Aula: " + aula.getNome() + " || Capienza: " + aula.getCapienza());
+				}
+			} else {
+				listaFormattata.add("Aula: " + aula.getNome() + " || Capienza: " + aula.getCapienza());
+			}
+		}
+		return listaFormattata;
+	}
+
+	public List<String> getNomiAule() {
+		List<String> nomi = new ArrayList<>();
+		for (Aula aula : aule) {
+			nomi.add(aula.getNome());
+		}
+		return nomi;
+	}
 }
