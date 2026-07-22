@@ -3,6 +3,8 @@ package gui;
 import controller.Controller;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
@@ -19,7 +21,7 @@ public class RicercaAula {
     private JLabel logoLabel;
     private JPanel rightPanel;
     private JPanel leftPanel;
-    private JComboBox<String> aulaComboBox;
+    private JTextField auleField;
     private DefaultListModel<String> modelloLista;
     private JFrame frame;
 
@@ -32,37 +34,36 @@ public class RicercaAula {
         frame.setVisible(true);
         ricercaFrame.setVisible(false);
 
-        // Inizializzazione Lista
         modelloLista = new DefaultListModel<>();
         auleList.setModel(modelloLista);
         auleList.setFixedCellHeight(25);
 
-        // Popolamento ComboBox Aule
-        aulaComboBox.addItem("-SELECT-");
-        for (String aula : controller.getNomiAule()) {
-            aulaComboBox.addItem(aula);
-        }
+        auleField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                aggiornaDati(controller); // Scatta quando digiti/incolli una lettera
+            }
 
-        // Listener per ricaricare quando si torna alla pagina
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                aggiornaDati(controller); // Scatta quando cancelli una lettera
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                aggiornaDati(controller); // Gestisce altri tipi di modifiche stilistiche
+            }
+        });
+
         frame.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentShown(ComponentEvent e) {
-                aggiornaDati("-SELECT-", controller);
+                auleField.setText("");
+                aggiornaDati(controller);
             }
         });
 
-        // Azione ComboBox
-        aulaComboBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String scelto = (String) aulaComboBox.getSelectedItem();
-                aggiornaDati(scelto, controller);
-            }
-        });
-
-        // Primo avvio
-        aggiornaDati("-SELECT-", controller);
-
+        aggiornaDati(controller);
         indietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,13 +86,19 @@ public class RicercaAula {
             }
         });
     }
-    private void aggiornaDati(String filtro, Controller controller) {
+
+    private void aggiornaDati(Controller controller) {
+        String testoCercato = auleField.getText();
         modelloLista.clear();
-        List<String> risultati = controller.getDatiAuleFormattati_Ricerca(filtro);
+
+        List<String> risultati = controller.getDatiAuleFormattati_Ricerca(testoCercato);
+
         if (risultati.isEmpty()) {
-            modelloLista.addElement("Nessuna aula trovata.");
+            modelloLista.addElement("Nessun risultato trovato.");
         } else {
-            for (String r : risultati) modelloLista.addElement(r);
+            for (String r : risultati) {
+                modelloLista.addElement(r);
+            }
         }
     }
 }

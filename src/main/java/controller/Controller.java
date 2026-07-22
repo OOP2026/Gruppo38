@@ -294,25 +294,51 @@ public class Controller {
 		return listaFormattata;
 	}
 
-	public List<String> getDatiAuleFormattati_Ricerca(String aulaCercata) {
+	public List<String> getDatiAuleFormattati_Ricerca(String filtro) {
 		List<String> listaFormattata = new ArrayList<>();
 		for (Aula aula : aule) {
-			if (aulaCercata != null && !aulaCercata.equals("-SELECT-")) {
-				if (aula.getNome().equalsIgnoreCase(aulaCercata)) {
-					listaFormattata.add("Aula: " + aula.getNome() + " || Capienza: " + aula.getCapienza());
-				}
-			} else {
-				listaFormattata.add("Aula: " + aula.getNome() + " || Capienza: " + aula.getCapienza());
+			String voce = "Aula: " + aula.getNome() + " || Capienza: " + aula.getCapienza();
+
+			if (filtro == null || filtro.trim().isEmpty()) {
+				listaFormattata.add(voce);
+			} else if (aula.getNome().toLowerCase().contains(filtro.toLowerCase())) {
+				listaFormattata.add(voce);
 			}
 		}
 		return listaFormattata;
 	}
 
-	public List<String> getNomiAule() {
-		List<String> nomi = new ArrayList<>();
-		for (Aula aula : aule) {
-			nomi.add(aula.getNome());
+	public List<String> getDocentiFormattati_Ricerca(String filtro) {
+		List<String> listaFormattata = new ArrayList<>();
+		for (Docente docente : docenti) {
+			String nomeCompleto = docente.getNome() + " " + docente.getCognome();
+			String voce = "Docente: " + nomeCompleto;
+
+			if (filtro == null || filtro.trim().isEmpty()) {
+				listaFormattata.add(voce);
+			} else if (nomeCompleto.toLowerCase().contains(filtro.toLowerCase())) {
+				listaFormattata.add(voce);
+			}
 		}
-		return nomi;
+		return listaFormattata;
+	}
+
+	public List<String> getInsegnamentiFormattati_Ricerca(String filtro) {
+		List<String> listaFormattata = new ArrayList<>();
+		for (Docente docente : docenti) {
+			if (docente.getMaterie() != null) {
+				for (Insegnamento ins : docente.getMaterie()) {
+					String voce = "Insegnamento: " + ins.getNome() +
+							" || Docente: " + docente.getNome() + " " + docente.getCognome();
+
+					if (filtro == null || filtro.trim().isEmpty()) {
+						listaFormattata.add(voce);
+					} else if (ins.getNome().toLowerCase().contains(filtro.toLowerCase())) {
+						listaFormattata.add(voce);
+					}
+				}
+			}
+		}
+		return listaFormattata;
 	}
 }
