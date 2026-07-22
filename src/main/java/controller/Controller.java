@@ -302,7 +302,7 @@ public class Controller {
 		return nomi;
 	}
 
-	public List<String> getDatiAuleFormattati_Ricerca(String filtro) {
+	public List<String> getDatiAuleFormattatiRicerca(String filtro) {
 		List<String> listaFormattata = new ArrayList<>();
 		for (Aula aula : aule) {
 			String voce = "Aula: " + aula.getNome() + " || Capienza: " + aula.getCapienza();
@@ -316,7 +316,7 @@ public class Controller {
 		return listaFormattata;
 	}
 
-	public List<String> getDocentiFormattati_Ricerca(String filtro) {
+	public List<String> getDocentiFormattatiRicerca(String filtro) {
 		List<String> listaFormattata = new ArrayList<>();
 		for (Docente docente : docenti) {
 			String nomeCompleto = docente.getNome() + " " + docente.getCognome();
@@ -331,7 +331,7 @@ public class Controller {
 		return listaFormattata;
 	}
 
-	public List<String> getInsegnamentiFormattati_Ricerca(String filtro) {
+	public List<String> getInsegnamentiFormattatiRicerca(String filtro) {
 		List<String> listaFormattata = new ArrayList<>();
 		for (Docente docente : docenti) {
 			if (docente.getMaterie() != null) {

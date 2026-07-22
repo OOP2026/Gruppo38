@@ -4,7 +4,6 @@ import controller.Controller;
 import exceptions.CampoVuotoException;
 
 import javax.swing.*;
-import javax.swing.text.NumberFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

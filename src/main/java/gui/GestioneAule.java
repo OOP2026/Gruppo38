@@ -22,14 +22,12 @@ public class GestioneAule {
     private JButton logOutButton;
     private JFrame gestioneFrame;
     private DefaultListModel<String> modelloLista;
-    private String login;
 
-    public GestioneAule(JFrame mainFrame, JFrame profileFrame, Controller controller, String login) {
+    public GestioneAule(JFrame mainFrame, JFrame profileFrame, Controller controller) {
         gestioneFrame = new JFrame("Gestione Aule");
         gestioneFrame.setContentPane(mainPanel);
         gestioneFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         profileFrame.setVisible(false);
-        this.login = login;
         gestioneFrame.pack();
         gestioneFrame.setVisible(true);
         modificaAulaButton.setVisible(false);
@@ -53,7 +51,7 @@ public class GestioneAule {
         creaAulaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new CreaAula(gestioneFrame, controller, login);
+                new CreaAula(gestioneFrame, controller);
             }
         });
         modificaAulaButton.addActionListener(new ActionListener() {

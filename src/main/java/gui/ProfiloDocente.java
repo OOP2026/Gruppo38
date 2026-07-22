@@ -93,7 +93,7 @@ public class ProfiloDocente {
         gestioneAuleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GestioneAule(mainFrame, profileFrame, controller, login);
+                new GestioneAule(mainFrame, profileFrame, controller);
             }
         });
     }

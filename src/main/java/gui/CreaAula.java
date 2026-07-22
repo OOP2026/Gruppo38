@@ -21,7 +21,7 @@ public class CreaAula {
     private JPanel leftPanel;
     private JFrame frame;
 
-    public CreaAula(JFrame gestioneFrame, Controller controller, String login) {
+    public CreaAula(JFrame gestioneFrame, Controller controller) {
         frame = new JFrame("Crea Insegnamento");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

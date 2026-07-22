@@ -91,7 +91,7 @@ public class RicercaAula {
         String testoCercato = auleField.getText();
         modelloLista.clear();
 
-        List<String> risultati = controller.getDatiAuleFormattati_Ricerca(testoCercato);
+        List<String> risultati = controller.getDatiAuleFormattatiRicerca(testoCercato);
 
         if (risultati.isEmpty()) {
             modelloLista.addElement("Nessun risultato trovato.");

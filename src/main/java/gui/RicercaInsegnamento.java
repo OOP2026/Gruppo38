@@ -91,7 +91,7 @@ public class RicercaInsegnamento {
         String testoCercato = insegnamentoField.getText();
         modelloLista.clear();
 
-        List<String> risultati = controller.getInsegnamentiFormattati_Ricerca(testoCercato);
+        List<String> risultati = controller.getInsegnamentiFormattatiRicerca(testoCercato);
 
         if (risultati.isEmpty()) {
             modelloLista.addElement("Nessun risultato trovato.");

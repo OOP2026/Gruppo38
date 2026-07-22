@@ -92,7 +92,7 @@ public class RicercaDocente {
         String testoCercato = docentiField.getText();
         modelloLista.clear();
 
-        List<String> risultati = controller.getDocentiFormattati_Ricerca(testoCercato);
+        List<String> risultati = controller.getDocentiFormattatiRicerca(testoCercato);
 
         if (risultati.isEmpty()) {
             modelloLista.addElement("Nessun risultato trovato.");
