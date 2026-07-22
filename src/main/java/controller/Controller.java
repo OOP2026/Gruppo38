@@ -262,4 +262,35 @@ public class Controller {
 		}
 		return auleList;
 	}
+	public List<String> getInsegnamentiPerRicercaAnno() {
+		List<String> listaFormattata = new ArrayList<>();
+
+		for (Docente docente : docenti) {
+			if (docente.getMaterie() != null) {
+				for (Insegnamento ins : docente.getMaterie()) {
+					String voce = ins.getNome() + " - Anno: " + ins.getAnno() +
+							" || Docente: " + docente.getNome() + " " + docente.getCognome();
+					listaFormattata.add(voce);
+				}
+			}
+		}
+		return listaFormattata;
+	}
+
+	public List<String> getInsegnamentiPerAnno(String annoCercato) {
+		List<String> listaFormattata = new ArrayList<>();
+
+		for (Docente docente : docenti) {
+			if (docente.getMaterie() != null) {
+				for (Insegnamento ins : docente.getMaterie()) {
+					if (ins.getAnno().name().equalsIgnoreCase(annoCercato)) {
+						String voce = ins.getNome() + " - Anno: " + ins.getAnno() +
+								" || Docente: " + docente.getNome() + " " + docente.getCognome();
+						listaFormattata.add(voce);
+					}
+				}
+			}
+		}
+		return listaFormattata;
+	}
 }

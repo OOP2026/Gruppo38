@@ -5,6 +5,7 @@ import controller.Controller;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class RicercaAnno {
     private JPanel mainPanel;
@@ -34,8 +35,31 @@ public class RicercaAnno {
 
         modelloLista = new DefaultListModel<>();
         annoList.setModel(modelloLista);
+        annoList.setFixedCellHeight(25);
 
-        
+        mostraTuttiGliInsegnamenti(controller);
+
+        annoComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String annoSelezionato = (String) annoComboBox.getSelectedItem();
+                modelloLista.clear();
+
+                if (annoSelezionato != null && !annoSelezionato.equals("-SELECT-")) {
+                    List<String> risultati = controller.getInsegnamentiPerAnno(annoSelezionato);
+
+                    if (risultati.isEmpty()) {
+                        modelloLista.addElement("Nessun insegnamento trovato per il " + annoSelezionato + " anno.");
+                    } else {
+                        for (String risultato : risultati) {
+                            modelloLista.addElement(risultato);
+                        }
+                    }
+                } else {
+                    mostraTuttiGliInsegnamenti(controller);
+                }
+            }
+        });
 
         indietroButton.addActionListener(new ActionListener() {
             @Override
@@ -58,5 +82,18 @@ public class RicercaAnno {
                 frame.dispose();
             }
         });
+    }
+
+    private void mostraTuttiGliInsegnamenti(Controller controller) {
+        modelloLista.clear();
+        List<String> tutti = controller.getInsegnamentiPerRicercaAnno();
+
+        if (tutti.isEmpty()) {
+            modelloLista.addElement("Nessun insegnamento registrato nel sistema.");
+        } else {
+            for (String voce : tutti) {
+                modelloLista.addElement(voce);
+            }
+        }
     }
 }
