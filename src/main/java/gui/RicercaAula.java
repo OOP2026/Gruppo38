@@ -41,17 +41,17 @@ public class RicercaAula {
         auleField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                aggiornaDati(controller); // Scatta quando digiti/incolli una lettera
+                aggiornaDati(controller);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                aggiornaDati(controller); // Scatta quando cancelli una lettera
+                aggiornaDati(controller);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                aggiornaDati(controller); // Gestisce altri tipi di modifiche stilistiche
+                aggiornaDati(controller);
             }
         });
 
