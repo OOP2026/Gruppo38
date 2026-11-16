@@ -49,9 +49,13 @@ public class Home {
     public Home() {
 
         try {
+
             logo = ImageIO.read(new File("src/main/java/gui/image/fed2.png"));
+
         } catch (IOException e) {
+
             throw new RuntimeException(e);
+            
         }
         logoLabel.setIcon(new ImageIcon(logo));
 
