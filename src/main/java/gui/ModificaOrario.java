@@ -17,12 +17,14 @@ public class ModificaOrario {
     private JButton tornaIndietroButton;
     private JPanel buttonPanel;
     private JButton saveButton;
-    private JFrame frame;
+    private JButton richiesteSpostamentiButton;
+    private JPanel richiestaSpostamentiPanel;
+    private JFrame modificaOrarioFrame;
 
-    public ModificaOrario(JFrame profileFrame, Controller controller) {
-        frame = new JFrame("Modifica Orario");
-        frame.setContentPane(mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public ModificaOrario(JFrame profileFrame, Controller controller, String login) {
+        modificaOrarioFrame = new JFrame("Modifica Orario");
+        modificaOrarioFrame.setContentPane(mainPanel);
+        modificaOrarioFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         profileFrame.setVisible(false);
 
         String[] giorni = {"Orario", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì"};
@@ -69,48 +71,51 @@ public class ModificaOrario {
         orariTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int riga = orariTable.getSelectedRow();
-                    int colonna = orariTable.getSelectedColumn();
+                if (Boolean.parseBoolean(controller.getAttributiDocente(login).get(3))) {
+                    if (e.getClickCount() == 2) {
+                        int riga = orariTable.getSelectedRow();
+                        int colonna = orariTable.getSelectedColumn();
 
-                    if (colonna > 0) {
-                        JPanel pannelloPopup = new JPanel(new GridLayout(0, 1));
-                        pannelloPopup.add(new JLabel("Seleziona Insegnamento:"));
-                        pannelloPopup.add(comboInsegnamenti);
-                        pannelloPopup.add(new JLabel("Seleziona Aula:"));
-                        pannelloPopup.add(comboAule);
+                        if (colonna > 0) {
+                            JPanel pannelloPopup = new JPanel(new GridLayout(0, 1));
+                            pannelloPopup.add(new JLabel("Seleziona Insegnamento:"));
+                            pannelloPopup.add(comboInsegnamenti);
+                            pannelloPopup.add(new JLabel("Seleziona Aula:"));
+                            pannelloPopup.add(comboAule);
 
-                        int result = JOptionPane.showConfirmDialog(frame, pannelloPopup,
-                                "Assegna Lezione", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                            int result = JOptionPane.showConfirmDialog(modificaOrarioFrame, pannelloPopup,
+                                    "Assegna Lezione", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
-                        if (result == JOptionPane.OK_OPTION) {
-                            String insSelezionato = (String) comboInsegnamenti.getSelectedItem();
-                            String aulaSelezionata = (String) comboAule.getSelectedItem();
+                            if (result == JOptionPane.OK_OPTION) {
+                                String insSelezionato = (String) comboInsegnamenti.getSelectedItem();
+                                String aulaSelezionata = (String) comboAule.getSelectedItem();
 
-                            if (insSelezionato != null && !insSelezionato.isEmpty()) {
-                                String testoCella = insSelezionato;
-                                if (aulaSelezionata != null && !aulaSelezionata.trim().isEmpty()) {
-                                    testoCella += " - " + aulaSelezionata;
+                                if (insSelezionato != null && !insSelezionato.isEmpty()) {
+                                    String testoCella = insSelezionato;
+                                    if (aulaSelezionata != null && !aulaSelezionata.trim().isEmpty()) {
+                                        testoCella += " - " + aulaSelezionata;
+                                    }
+                                    orariTable.setValueAt(testoCella, riga, colonna);
+                                } else {
+                                    orariTable.setValueAt("", riga, colonna);
                                 }
-                                orariTable.setValueAt(testoCella, riga, colonna);
-                            } else {
-                                orariTable.setValueAt("", riga, colonna);
                             }
                         }
                     }
                 }
+                else JOptionPane.showMessageDialog(null,"Non sei responsabile!");
             }
         });
 
-        frame.pack();
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
+        modificaOrarioFrame.pack();
+        modificaOrarioFrame.setVisible(true);
+        modificaOrarioFrame.setLocationRelativeTo(null);
 
         tornaIndietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 profileFrame.setVisible(true);
-                frame.dispose();
+                modificaOrarioFrame.dispose();
             }
         });
         saveButton.addActionListener(new ActionListener() {
@@ -132,9 +137,15 @@ public class ModificaOrario {
                 }
                 controller.salvaOrarioGenerale(datiDaSalvare);
 
-                JOptionPane.showMessageDialog(frame, "Orario salvato correttamente!");
+                JOptionPane.showMessageDialog(modificaOrarioFrame, "Orario salvato correttamente!");
                 profileFrame.setVisible(true);
-                frame.dispose();
+                modificaOrarioFrame.dispose();
+            }
+        });
+        richiesteSpostamentiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new RichiestaSpostamento(modificaOrarioFrame, controller, login);
             }
         });
     }

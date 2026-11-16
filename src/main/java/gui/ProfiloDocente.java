@@ -55,9 +55,7 @@ public class ProfiloDocente {
         logoLabel.setIcon(new ImageIcon(logo));
 
         if (!Boolean.parseBoolean(controller.getAttributiDocente(login).get(3))) {
-            modificaOrarioButton.setToolTipText("Non sei Responsabile!");
             gestioneAuleButton.setToolTipText("Non sei Responsabile!");
-            modificaOrarioButton.setEnabled(false);
             gestioneAuleButton.setEnabled(false);
         }
 
@@ -68,7 +66,7 @@ public class ProfiloDocente {
         modificaOrarioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new  ModificaOrario(profileFrame, controller);
+                new  ModificaOrario(profileFrame, controller, login);
             }
         });
         insegnamentiButton.addActionListener(new ActionListener() {
