@@ -5,7 +5,17 @@ public class Insegnamento {
     private int cfu;
     private AnnoAccademico anno;
 
-    public Insegnamento(String nome, int cfu, AnnoAccademico anno) {
+    public Docente getDocente() {
+        return docente;
+    }
+
+    public void setDocente(Docente docente) {
+        this.docente = docente;
+    }
+
+    private Docente docente;
+    public Insegnamento(Docente docente, String nome, int cfu, AnnoAccademico anno) {
+        this.docente = docente;
         this.nome = nome;
         this.cfu = cfu;
         this.anno = anno;

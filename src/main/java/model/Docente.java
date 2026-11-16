@@ -85,7 +85,7 @@ public class Docente extends Utente {
         int cfu = Integer.parseInt(cfuStr.trim());
 
         AnnoAccademico annoCorso =  AnnoAccademico.valueOf(annoCorsoStr);
-        materie.add(new Insegnamento(nome, cfu, annoCorso));
+        materie.add(new Insegnamento(this , nome, cfu, annoCorso));
     }
 
     public void removeInsegnamento(int selectedIndex) {

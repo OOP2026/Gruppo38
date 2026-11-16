@@ -118,30 +118,30 @@ public class ModificaOrario {
                 modificaOrarioFrame.dispose();
             }
         });
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int righe = orariTable.getRowCount();
-                int colonne = orariTable.getColumnCount();
-                String[][] datiDaSalvare = new String[righe][colonne];
-
-                for (int r = 0; r < righe; r++) {
-                    for (int c = 0; c < colonne; c++) {
-                        Object valore = orariTable.getValueAt(r, c);
-                        if(valore != null){
-                            datiDaSalvare[r][c] = valore.toString();
-                        } else {
-                            datiDaSalvare[r][c] = "";
-                        }
-                    }
-                }
-                controller.salvaOrarioGenerale(datiDaSalvare);
-
-                JOptionPane.showMessageDialog(modificaOrarioFrame, "Orario salvato correttamente!");
-                profileFrame.setVisible(true);
-                modificaOrarioFrame.dispose();
-            }
-        });
+//        saveButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int righe = orariTable.getRowCount();
+//                int colonne = orariTable.getColumnCount();
+//                String[][] datiDaSalvare = new String[righe][colonne];
+//
+//                for (int r = 0; r < righe; r++) {
+//                    for (int c = 0; c < colonne; c++) {
+//                        Object valore = orariTable.getValueAt(r, c);
+//                        if(valore != null){
+//                            datiDaSalvare[r][c] = valore.toString();
+//                        } else {
+//                            datiDaSalvare[r][c] = "";
+//                        }
+//                    }
+//                }
+//                controller.salvaOrarioGenerale(datiDaSalvare);
+//
+//                JOptionPane.showMessageDialog(modificaOrarioFrame, "Orario salvato correttamente!");
+//                profileFrame.setVisible(true);
+//                modificaOrarioFrame.dispose();
+//            }
+//        });
         richiesteSpostamentiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

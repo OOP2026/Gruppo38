@@ -17,7 +17,7 @@ public class Controller {
 	ArrayList<Docente> docenti = new ArrayList<>();
 	ArrayList<Aula> aule = new ArrayList<>();
 
-	private String[][] orarioGenerale = null;
+	private Lezione[][] orarioGenerale = new Lezione[5][5];
 
 	public void registrazioneDocente (String login, String password, String nome, String cognome, String email, String isResponsabile) throws LoginException, AuthenticationException, CampoVuotoException {
 
@@ -214,12 +214,18 @@ public class Controller {
 		return insegnamenti;
 	}
 
-	public void salvaOrarioGenerale(String[][] nuovoOrario) {
+	public void salvaOrarioGenerale(Lezione[][] nuovoOrario) {
 		this.orarioGenerale = nuovoOrario;
 	}
 
 	public String[][] getOrarioGenerale() {
-		return this.orarioGenerale;
+		String[][] orarioString = new String[5][5];
+		for (int lezI = 0; lezI < orarioGenerale.length; lezI++){
+			for (int lezJ = 0; lezJ < orarioGenerale[lezI].length; lezJ++){
+				orarioString[lezI][lezJ] = orarioGenerale[lezI][lezJ].getInsegnamento().getNome() + " (" + orarioGenerale[lezI][lezJ].getInsegnamento().getDocente().getNome() + " " + orarioGenerale[lezI][lezJ].getInsegnamento().getDocente().getCognome() + ")";
+			}
+		}
+		return orarioString;
 	}
 
 	public void aggiungiAula(String nome, String capienzaStr) throws CampoVuotoException, CreaException {
